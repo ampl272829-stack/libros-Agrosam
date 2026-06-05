@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audiolibros</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Audiolibros</h1>
+  </header>
+
+  <main>
+    <section id="galeria">
+      <div id="libros-grid"></div>
+    </section>
+
+    <section id="player-view" class="oculto">
+      <button id="btn-volver" class="btn-volver">← Volver</button>
+      <div id="player-contenido"></div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/player.js"></script>
+  <script>iniciarApp();</script>
+</body>
+</html>
