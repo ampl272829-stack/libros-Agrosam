@@ -4,7 +4,7 @@ const libros = [
     titulo: 'Sopita de Mentores',
     autor: 'Anónimo',
     portada: 'portadas/sopita-mentores.jpg',
-    pdf: 'libros/Sopita de Mentores (Version Final).pdf',
+    pdf: 'libros/sopita-mentores.pdf',
     descripcion: 'Un libro inspirador con reflexiones y aprendizajes.',
   },
 ];
