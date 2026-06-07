@@ -1,20 +1,19 @@
 function iniciarApp() {
   const galeria = document.getElementById('galeria');
-  const playerView = document.getElementById('player-view');
+  const readerView = document.getElementById('reader-view');
   const librosGrid = document.getElementById('libros-grid');
   const btnVolver = document.getElementById('btn-volver');
 
   function mostrarGaleria() {
     galeria.classList.remove('oculto');
-    playerView.classList.add('oculto');
-    detenerReproduccion();
+    readerView.classList.add('oculto');
   }
 
-  function mostrarPlayer(libroId) {
+  function mostrarReader(libroId) {
     const libro = libros.find(l => l.id === libroId);
     if (!libro) return;
     galeria.classList.add('oculto');
-    playerView.classList.remove('oculto');
+    readerView.classList.remove('oculto');
     cargarLibro(libro);
   }
 
@@ -22,7 +21,7 @@ function iniciarApp() {
     if (!libros.length) {
       librosGrid.innerHTML = `
         <div id="sin-libros">
-          <p>No hay audiolibros todavía</p>
+          <p>No hay libros todavía</p>
           <p class="sub">Agrega tus libros en <code>js/data.js</code></p>
         </div>
       `;
@@ -41,7 +40,7 @@ function iniciarApp() {
     `).join('');
 
     librosGrid.querySelectorAll('.libro-card').forEach(card => {
-      card.addEventListener('click', () => mostrarPlayer(card.dataset.id));
+      card.addEventListener('click', () => mostrarReader(card.dataset.id));
     });
   }
 

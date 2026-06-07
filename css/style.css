@@ -78,9 +78,9 @@ header h1 {
   color: #999;
 }
 
-/* --- Player View --- */
-#player-view {
-  max-width: 800px;
+/* --- Reader View --- */
+#reader-view {
+  max-width: 900px;
   margin: 0 auto;
   padding: 1.5rem;
 }
@@ -105,7 +105,7 @@ header h1 {
 #libro-header {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 #libro-header img {
@@ -126,197 +126,66 @@ header h1 {
 #libro-header .autor {
   color: #999;
   font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-/* --- Chapters --- */
-#lista-capitulos {
-  margin-bottom: 2rem;
-}
-
-.capitulo-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-  border: 1px solid transparent;
-}
-
-.capitulo-item:hover {
-  background: #1e1e1e;
-}
-
-.capitulo-item.activo {
-  background: #1e3a3a;
-  border-color: #2a6a6a;
-}
-
-.capitulo-item .num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #2a2a2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #aaa;
-  flex-shrink: 0;
-}
-
-.capitulo-item.activo .num {
-  background: #2a6a6a;
-  color: #fff;
-}
-
-.capitulo-item .nombre {
-  flex: 1;
-  font-size: 0.95rem;
-}
-
-.capitulo-item .duracion {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-/* --- Player Controls --- */
-#reproductor {
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 1.25rem;
-  border: 1px solid #2a2a2a;
-}
-
-#reproductor .info-archivo {
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 0.75rem;
-  text-align: center;
-}
-
-#progreso-container {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-#progreso-container span {
-  font-size: 0.8rem;
+#libro-header .descripcion {
   color: #888;
-  min-width: 40px;
-}
-
-#barra-progreso {
-  flex: 1;
-  height: 6px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: #333;
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-}
-
-#barra-progreso::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #2a9d8f;
-  cursor: pointer;
-}
-
-#barra-progreso::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #2a9d8f;
-  cursor: pointer;
-  border: none;
-}
-
-#controles {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-#controles button {
-  background: none;
-  border: none;
-  color: #ccc;
-  cursor: pointer;
-  font-size: 1.5rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-#controles button:hover {
-  background: #2a2a2a;
-  color: #fff;
-}
-
-#btn-play {
-  background: #2a9d8f !important;
-  color: #fff !important;
-  font-size: 1.8rem !important;
-}
-
-#btn-play:hover {
-  background: #238b7e !important;
-}
-
-#control-volumen {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: auto;
-}
-
-#control-volumen input {
-  width: 80px;
-  height: 4px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: #444;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-}
-
-#control-volumen input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #888;
-  cursor: pointer;
-}
-
-#control-volumen input::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #888;
-  cursor: pointer;
-  border: none;
-}
-
-#control-volumen .icono {
   font-size: 0.9rem;
-  color: #888;
-  width: 20px;
-  text-align: center;
+  line-height: 1.5;
+}
+
+/* --- PDF Actions --- */
+#pdf-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #fff;
+  background: #2a6a6a;
+  border: 1px solid #3a8a8a;
+  transition: background 0.2s;
+}
+
+.btn-pdf:hover {
+  background: #3a8a8a;
+}
+
+.btn-pdf.btn-abrir {
+  background: transparent;
+  border: 1px solid #444;
+  color: #ccc;
+}
+
+.btn-pdf.btn-abrir:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+/* --- PDF Viewer --- */
+#pdf-viewer {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  background: #1e1e1e;
+}
+
+#pdf-embed {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  display: block;
+  border: none;
 }
 
 /* --- Empty state --- */
@@ -355,11 +224,16 @@ header h1 {
     height: 140px;
   }
 
-  #player-view {
+  #reader-view {
     padding: 1rem;
   }
 
-  #control-volumen {
-    display: none;
+  #pdf-embed {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  #pdf-actions {
+    flex-direction: column;
   }
 }
