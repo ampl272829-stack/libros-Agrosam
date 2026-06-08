@@ -17,6 +17,21 @@ function iniciarApp() {
     cargarLibro(libro);
   }
 
+  function mostrarProximamente() {
+    galeria.classList.add('oculto');
+    readerView.classList.remove('oculto');
+    document.getElementById('reader-contenido').innerHTML = `
+      <div class="prox-details" style="text-align: center; padding: 2rem;">
+        <h2>Próximamente</h2>
+        <p style="margin: 1rem 0; color: #ccc;">Estamos preparando algo muy especial para ti.</p>
+        <p style="margin: 1rem 0; color: #ccc;">Mantente atento a nuestras redes sociales para más novedades y el lanzamiento oficial.</p>
+        <div class="prox-img-wrap" style="max-width: 400px; margin: 2rem auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            <img src="portadas/agrosam.jpg" alt="Próximamente" style="width: 100%; height: auto; display: block;">
+        </div>
+      </div>
+    `;
+  }
+
   function renderizarGaleria() {
     if (!libros.length) {
       librosGrid.innerHTML = `
@@ -47,9 +62,11 @@ function iniciarApp() {
       </div>
     `;
 
-    librosGrid.querySelectorAll('.libro-card').forEach(card => {
+    librosGrid.querySelectorAll('.libro-card:not(.prox-card)').forEach(card => {
       card.addEventListener('click', () => mostrarReader(card.dataset.id));
     });
+    
+    librosGrid.querySelector('.prox-card').addEventListener('click', mostrarProximamente);
   }
 
   btnVolver.addEventListener('click', mostrarGaleria);
