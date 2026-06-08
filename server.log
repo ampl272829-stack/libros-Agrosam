@@ -1,0 +1,57 @@
+ INFO  Accepting connections at http://localhost:8080
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 54 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /css/style.css
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /js/data.js
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /js/app.js
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /js/player.js
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 8 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 10 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 12 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 13 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /favicon.ico
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 404 in 2 ms
+ HTTP  7/6/2026 20:59:07 127.0.0.1 GET /portadas/sopita-mentores.jpg
+ HTTP  7/6/2026 20:59:07 127.0.0.1 Returned 200 in 2 ms
+ HTTP  7/6/2026 20:59:12 127.0.0.1 GET /libros/Metodologia%20Panal.pdf
+ HTTP  7/6/2026 20:59:12 127.0.0.1 Returned 200 in 18 ms
+ HTTP  7/6/2026 20:59:18 127.0.0.1 GET /libros/sopita-mentores.pdf
+ HTTP  7/6/2026 20:59:18 127.0.0.1 Returned 200 in 33 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 304 in 4 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /css/style.css
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /js/data.js
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /js/app.js
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /js/player.js
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 200 in 6 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /portadas/sopita-mentores.jpg
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /portadas/guia-gerente.jpg
+ HTTP  7/6/2026 21:01:37 127.0.0.1 GET /portadas/metodologia-panal.jpg
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 200 in 2 ms
+ HTTP  7/6/2026 21:01:37 127.0.0.1 Returned 200 in 2 ms
+ HTTP  7/6/2026 21:11:18 127.0.0.1 GET /libros/sopita-mentores.pdf
+ HTTP  7/6/2026 21:11:18 127.0.0.1 Returned 304 in 3 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 2 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /css/style.css
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /js/data.js
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /js/player.js
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /js/app.js
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 1 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 200 in 4 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /portadas/sopita-mentores.jpg
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /portadas/guia-gerente.jpg
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 5 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 GET /portadas/metodologia-panal.jpg
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 3 ms
+ HTTP  7/6/2026 21:11:20 127.0.0.1 Returned 304 in 3 ms
+ HTTP  7/6/2026 21:12:06 127.0.0.1 GET /libros/GUIA%20GERENTE%20TRADICIONAL%20A%204.0.pdf
+ HTTP  7/6/2026 21:12:06 127.0.0.1 Returned 200 in 9 ms
+
+ INFO  Gracefully shutting down. Please wait...

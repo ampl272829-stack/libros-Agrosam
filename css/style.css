@@ -205,7 +205,68 @@ header h1 {
   color: #555;
 }
 
-/* --- Responsive --- */
+/* --- Proximamente --- */
+.seccion-proximamente {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+  margin-top: 2rem;
+}
+
+.prox-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.prox-img-wrap {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.prox-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prox-content p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* --- Footer --- */
+footer {
+  background: #0a0a0a;
+  color: #888;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   #libros-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
