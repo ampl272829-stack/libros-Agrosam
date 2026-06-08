@@ -37,7 +37,15 @@ function iniciarApp() {
           <p>${libro.autor}</p>
         </div>
       </div>
-    `).join('');
+    `).join('') + `
+      <div class="libro-card prox-card">
+        <img src="portadas/agrosam.jpg" alt="Próximamente">
+        <div class="libro-info">
+          <h3>Próximamente</h3>
+          <p>Pronto, atento a redes</p>
+        </div>
+      </div>
+    `;
 
     librosGrid.querySelectorAll('.libro-card').forEach(card => {
       card.addEventListener('click', () => mostrarReader(card.dataset.id));

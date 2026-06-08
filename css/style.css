@@ -205,15 +205,15 @@ header h1 {
   color: #555;
 }
 
-/* --- Proximamente --- */
-.seccion-proximamente {
-  padding: 2rem;
-  text-align: center;
-  background: #1e1e1e;
-  border-radius: 12px;
-  border: 1px solid #2a2a2a;
-  max-width: 1200px;
-  margin: 2rem auto;
+.prox-card {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.prox-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #2a2a2a;
 }
 
 .prox-content h3 {
