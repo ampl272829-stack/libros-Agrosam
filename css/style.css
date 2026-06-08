@@ -207,11 +207,13 @@ header h1 {
 
 /* --- Proximamente --- */
 .seccion-proximamente {
-  padding: 2rem 1rem;
+  padding: 2rem;
   text-align: center;
-  background: #1a1a1a;
-  border-top: 1px solid #333;
-  margin-top: 2rem;
+  background: #1e1e1e;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  max-width: 1200px;
+  margin: 2rem auto;
 }
 
 .prox-content h3 {
@@ -262,6 +264,9 @@ footer {
 .footer-contact a {
   color: #4a9eff;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-contact a:hover {
