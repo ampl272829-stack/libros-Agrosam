@@ -205,6 +205,17 @@ header h1 {
   color: #555;
 }
 
+.prox-card {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.prox-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #2a2a2a;
+}
+
 /* --- Footer --- */
 footer {
   background: #0a0a0a;
