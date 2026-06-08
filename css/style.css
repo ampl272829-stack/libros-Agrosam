@@ -205,44 +205,6 @@ header h1 {
   color: #555;
 }
 
-.prox-card {
-  cursor: default;
-  opacity: 0.8;
-}
-
-.prox-card:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: #2a2a2a;
-}
-
-.prox-content h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #fff;
-  opacity: 0.8;
-}
-
-.prox-img-wrap {
-  max-width: 300px;
-  margin: 0 auto 1rem;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.prox-img-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.prox-content p {
-  font-size: 1.1rem;
-  color: #ccc;
-}
-
 /* --- Footer --- */
 footer {
   background: #0a0a0a;
