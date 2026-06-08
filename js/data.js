@@ -23,4 +23,12 @@ const libros = [
     pdf: 'libros/Metodologia Panal.pdf',
     descripcion: 'Metodología de trabajo tipo panal.',
   },
+  {
+    id: 'guia-guardian-2',
+    titulo: 'Guía Guardian 2',
+    autor: 'Marynes Croquer Figuera',
+    portada: 'portadas/guia-guardian-2.jpg',
+    pdf: 'libros/guia-guardian-2.pdf',
+    descripcion: 'Segunda parte de la Guía Guardian.',
+  },
 ];

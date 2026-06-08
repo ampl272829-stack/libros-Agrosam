@@ -207,7 +207,7 @@ header h1 {
 
 /* --- Proximamente --- */
 .seccion-proximamente {
-  padding: 4rem 1.5rem;
+  padding: 2rem 1rem;
   text-align: center;
   background: #1a1a1a;
   border-top: 1px solid #333;
@@ -215,18 +215,19 @@ header h1 {
 }
 
 .prox-content h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
   color: #fff;
+  opacity: 0.8;
 }
 
 .prox-img-wrap {
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  border-radius: 12px;
+  max-width: 300px;
+  margin: 0 auto 1rem;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .prox-img-wrap img {
