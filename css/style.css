@@ -207,7 +207,7 @@ header h1 {
 
 .prox-card {
   cursor: default;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .prox-card:hover {
