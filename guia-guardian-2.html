@@ -69,36 +69,7 @@
       text-align: center;
     }
 
-    .photo-placeholder {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 3px solid var(--accent);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 0.5rem;
-    }
-
-    .photo-placeholder svg {
-      width: 50px;
-      height: 50px;
-      stroke: var(--accent-light);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .photo-placeholder span {
-      font-size: 0.75rem;
-      color: var(--accent-light);
-      margin-top: 0.3rem;
-    }
-
-        .author-name {
+    .author-name {
       margin: 0.5rem 0 0;
       font-size: 0.85rem;
       color: var(--accent-light);
@@ -178,28 +149,6 @@
       letter-spacing: 0.5px;
     }
 
-    .pdf-click-load {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      cursor: pointer;
-      display: block;
-      transition: transform 0.2s;
-    }
-
-    .pdf-click-load:hover {
-      transform: scale(1.02);
-    }
-
-    .pdf-hint {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-    }
-
     #pdf-frame {
       width: 100%;
       height: 110vh;
@@ -239,7 +188,6 @@
       .book-pdf-section { padding: 0 1rem 1rem; }
       #pdf-viewer { padding: 0.8rem 0.8rem 3rem; }
       #pdf-frame { height: 80vh; }
-      .pdf-click-load { max-width: 100%; }
       .pdf-actions { flex-direction: column; align-items: center; }
       .pdf-actions a { width: 100%; text-align: center; box-sizing: border-box; }
     }
@@ -269,8 +217,7 @@
         <a href="libros/guia-guardian-2.pdf" target="_blank" class="btn-open">Abrir en nueva pestaña</a>
       </div>
       <div id="pdf-viewer" data-caption="Vista previa del libro">
-        <img src="portadas/guia-guardian-2.jpg" alt="Toca para cargar PDF" class="pdf-click-load" id="pdf-cover" loading="lazy">
-        <p class="pdf-hint">Toca para ver el PDF</p>
+        <iframe src="libros/guia-guardian-2.pdf" id="pdf-frame" loading="lazy"></iframe>
       </div>
     </section>
 
@@ -289,24 +236,12 @@
 
   </div>
 
-  <script src="js/data.js?v=5"></script>
+  <script src="js/data.js?v=6"></script>
   <script>
     const libro = libros.find(l => l.id === 'guia-guardian-2');
     if (libro) {
       document.getElementById('book-title').textContent = libro.titulo;
       document.getElementById('book-desc').textContent = libro.descripcion;
-      const cover = document.getElementById('pdf-cover');
-      if (cover) {
-        cover.addEventListener('click', function cargarPDF() {
-          if (document.getElementById('pdf-frame')) return;
-          const viewer = document.getElementById('pdf-viewer');
-          const iframe = document.createElement('iframe');
-          iframe.src = libro.pdf;
-          iframe.id = 'pdf-frame';
-          iframe.loading = 'lazy';
-          viewer.appendChild(iframe);
-        });
-      }
     }
   </script>
 </html>
