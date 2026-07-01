@@ -257,9 +257,7 @@
         <a href="libros/guia-guardian-2.pdf" download class="btn-download">Descargar PDF</a>
         <a href="libros/guia-guardian-2.pdf" target="_blank" class="btn-open">Abrir en nueva pestaña</a>
       </div>
-      <div id="pdf-viewer" data-caption="Vista previa del libro">
-        <iframe src="libros/guia-guardian-2.pdf" id="pdf-frame" loading="lazy"></iframe>
-      </div>
+      <div id="pdf-viewer" data-caption="Vista previa del libro"></div>
       <img src="portadas/guia-guardian-2.jpg" alt="Vista previa" class="pdf-cover-mobile" id="pdf-cover" loading="lazy">
     </section>
 
@@ -284,6 +282,14 @@
     if (libro) {
       document.getElementById('book-title').textContent = libro.titulo;
       document.getElementById('book-desc').textContent = libro.descripcion;
+      if (window.innerWidth > 700) {
+        const viewer = document.getElementById('pdf-viewer');
+        const iframe = document.createElement('iframe');
+        iframe.src = libro.pdf;
+        iframe.id = 'pdf-frame';
+        iframe.loading = 'lazy';
+        viewer.appendChild(iframe);
+      }
       const cover = document.getElementById('pdf-cover');
       if (cover) cover.addEventListener('click', () => window.open(libro.pdf, '_blank'));
     }
