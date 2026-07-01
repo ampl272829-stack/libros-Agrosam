@@ -66,7 +66,8 @@ function iniciarApp() {
       card.addEventListener('click', () => mostrarReader(card.dataset.id));
     });
     
-    librosGrid.querySelector('.prox-card').addEventListener('click', mostrarProximamente);
+    const proxCard = librosGrid.querySelector('.prox-card');
+    if (proxCard) proxCard.addEventListener('click', mostrarProximamente);
   }
 
   btnVolver.addEventListener('click', mostrarGaleria);
