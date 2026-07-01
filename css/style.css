@@ -282,4 +282,13 @@ footer {
   #pdf-actions {
     flex-direction: column;
   }
+
+  .footer-contact p {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact a svg {
+    width: 16px;
+    height: 16px;
+  }
 }

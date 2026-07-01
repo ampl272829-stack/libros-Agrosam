@@ -200,6 +200,25 @@
     .footer-contact a:hover svg {
       stroke: #fff;
     }
+
+    @media (max-width: 700px) {
+      .book-header h1 { font-size: 1.4rem; }
+      .book-header { padding: 1.2rem 1rem; }
+      .book-intro {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+      }
+      .book-desc p { font-size: 0.9rem; }
+      .author-side { width: 150px; }
+      .author-img { width: 120px; height: 120px; }
+      .book-pdf-section { padding: 0 1rem 1rem; }
+      #pdf-viewer { padding: 0.8rem 0.8rem 3rem; }
+      #pdf-viewer embed { height: 80vh; }
+      .pdf-actions { flex-direction: column; align-items: center; }
+      .pdf-actions a { width: 100%; text-align: center; box-sizing: border-box; }
+    }
   </style>
 </head>
 <body>
@@ -215,7 +234,7 @@
         <p id="book-desc"></p>
       </div>
       <div class="author-side">
-        <img src="portadas/autora.jpg" alt="Marynes Croquer Figuera" class="author-img">
+        <img src="portadas/autora.jpg" alt="Marynes Croquer Figuera" class="author-img" loading="lazy">
         <p class="author-name">Marynes Croquer Figuera</p>
       </div>
     </section>
