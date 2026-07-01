@@ -190,14 +190,26 @@
       stroke: var(--accent-light);
     }
 
-    .pdf-cover-mobile {
-      display: none;
+    .pdf-click-load {
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.5);
       cursor: pointer;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .pdf-click-load:hover {
+      transform: scale(1.02);
+    }
+
+    .pdf-hint {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
     }
 
     #pdf-frame {
@@ -225,9 +237,9 @@
       .author-side { width: 150px; }
       .author-img { width: 120px; height: 120px; }
       .book-pdf-section { padding: 0 1rem 1rem; }
-      #pdf-viewer { display: none; }
-      #pdf-viewer embed, #pdf-frame { display: none; }
-      .pdf-cover-mobile { display: block; }
+      #pdf-viewer { padding: 0.8rem 0.8rem 3rem; }
+      #pdf-frame { height: 80vh; }
+      .pdf-click-load { max-width: 100%; }
       .pdf-actions { flex-direction: column; align-items: center; }
       .pdf-actions a { width: 100%; text-align: center; box-sizing: border-box; }
     }
@@ -256,8 +268,10 @@
         <a href="libros/GUIA GERENTE TRADICIONAL A 4.0.pdf" download class="btn-download">Descargar PDF</a>
         <a href="libros/GUIA GERENTE TRADICIONAL A 4.0.pdf" target="_blank" class="btn-open">Abrir en nueva pestaña</a>
       </div>
-      <div id="pdf-viewer" data-caption="Vista previa del libro"></div>
-      <img src="portadas/guia-gerente.jpg" alt="Vista previa" class="pdf-cover-mobile" id="pdf-cover" loading="lazy">
+      <div id="pdf-viewer" data-caption="Vista previa del libro">
+        <img src="portadas/guia-gerente.jpg" alt="Toca para cargar PDF" class="pdf-click-load" id="pdf-cover" loading="lazy">
+        <p class="pdf-hint">Toca para ver el PDF</p>
+      </div>
     </section>
 
     <footer>
@@ -281,16 +295,19 @@
     if (libro) {
       document.getElementById('book-title').textContent = libro.titulo;
       document.getElementById('book-desc').textContent = libro.descripcion;
-      if (window.innerWidth > 700) {
-        const viewer = document.getElementById('pdf-viewer');
-        const iframe = document.createElement('iframe');
-        iframe.src = libro.pdf;
-        iframe.id = 'pdf-frame';
-        iframe.loading = 'lazy';
-        viewer.appendChild(iframe);
-      }
       const cover = document.getElementById('pdf-cover');
-      if (cover) cover.addEventListener('click', () => window.open(libro.pdf, '_blank'));
+      if (cover) {
+        cover.addEventListener('click', function cargarPDF() {
+          if (document.getElementById('pdf-frame')) return;
+          const viewer = document.getElementById('pdf-viewer');
+          const iframe = document.createElement('iframe');
+          iframe.src = libro.pdf;
+          iframe.id = 'pdf-frame';
+          iframe.loading = 'lazy';
+          viewer.appendChild(iframe);
+          this.removeEventListener('click', cargarPDF);
+        });
+      }
     }
   </script>
 </html>
