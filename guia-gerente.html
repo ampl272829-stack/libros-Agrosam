@@ -178,13 +178,6 @@
       letter-spacing: 0.5px;
     }
 
-    #pdf-viewer embed {
-      width: 100%;
-      height: 110vh;
-      border-radius: 6px;
-      display: block;
-    }
-
     .footer-contact a {
       color: var(--accent-light);
     }
@@ -195,6 +188,24 @@
 
     .footer-contact svg {
       stroke: var(--accent-light);
+    }
+
+    .pdf-cover-mobile {
+      display: none;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    #pdf-frame {
+      width: 100%;
+      height: 110vh;
+      border-radius: 6px;
+      display: block;
+      border: none;
     }
 
     .footer-contact a:hover svg {
@@ -214,8 +225,9 @@
       .author-side { width: 150px; }
       .author-img { width: 120px; height: 120px; }
       .book-pdf-section { padding: 0 1rem 1rem; }
-      #pdf-viewer { padding: 0.8rem 0.8rem 3rem; }
-      #pdf-viewer embed { height: 80vh; }
+      #pdf-viewer { display: none; }
+      #pdf-viewer embed, #pdf-frame { display: none; }
+      .pdf-cover-mobile { display: block; }
       .pdf-actions { flex-direction: column; align-items: center; }
       .pdf-actions a { width: 100%; text-align: center; box-sizing: border-box; }
     }
@@ -245,8 +257,9 @@
         <a href="libros/GUIA GERENTE TRADICIONAL A 4.0.pdf" target="_blank" class="btn-open">Abrir en nueva pestaña</a>
       </div>
       <div id="pdf-viewer" data-caption="Vista previa del libro">
-        <embed src="libros/GUIA GERENTE TRADICIONAL A 4.0.pdf" type="application/pdf">
+        <iframe src="libros/GUIA GERENTE TRADICIONAL A 4.0.pdf" id="pdf-frame" loading="lazy"></iframe>
       </div>
+      <img src="portadas/guia-gerente.jpg" alt="Vista previa" class="pdf-cover-mobile" id="pdf-cover" loading="lazy">
     </section>
 
     <footer>
@@ -270,6 +283,8 @@
     if (libro) {
       document.getElementById('book-title').textContent = libro.titulo;
       document.getElementById('book-desc').textContent = libro.descripcion;
+      const cover = document.getElementById('pdf-cover');
+      if (cover) cover.addEventListener('click', () => window.open(libro.pdf, '_blank'));
     }
   </script>
 </html>
