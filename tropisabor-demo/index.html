@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tropisabor — Pizzería & Postres</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="navbar-logo" data-view="home">Tropisabor</a>
+    <div class="navbar-right">
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="#" data-view="home">Inicio</a></li>
+        <li><a href="#" data-view="menu">Menú</a></li>
+        <li><a href="#" data-view="galeria">Galería</a></li>
+        <li><a href="#" data-view="resenas">Reseñas</a></li>
+        <li><a href="#" data-view="pedidos">Pedidos</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Modo oscuro/claro">🌙</button>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== VIEW: HOME ========== -->
+  <section class="page-view active" id="view-home">
+    <div class="hero">
+      <div class="hero-content">
+        <h1 class="hero-logo">Tropisabor</h1>
+        <p class="hero-sub">Pizzería & Postres Artesanales</p>
+        <div class="hero-tagline">
+          <span id="typingText"></span><span class="cursor"></span>
+        </div>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary pulse" data-view="pedidos">🍕 Ordena ahora</a>
+          <a href="#" class="btn btn-outline" data-view="menu">Ver Menú</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title reveal">Sobre <span>Nosotros</span></h2>
+      <p class="section-subtitle reveal">Conoce Pizzería Tropisabor, tu lugar favorito en Maracay</p>
+      <div class="about-grid">
+        <img class="about-image reveal-left" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop" alt="Tropisabor">
+        <div class="about-text reveal-right">
+          <h3>Un paraíso en cada sabor</h3>
+          <p>En Pizzería Tropisabor llevamos más de una década deleitando a Maracay con nuestras pizzas artesanales de masa delgada y crujiente, preparadas con ingredientes frescos y mucho amor.</p>
+          <p>Además de nuestras irresistibles pizzas, ofrecemos una amplia variedad de postres tropicales, helados artesanales, salpicones y combos familiares que endulzan cualquier ocasión.</p>
+          <div class="features">
+            <div class="feature-item reveal">
+              <div class="feature-icon orange">🍕</div>
+              Pizzas artesanales
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-icon teal">🍨</div>
+              Postres tropicales
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-icon yellow">🚚</div>
+              Delivery sin costo
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-icon dark">💳</div>
+              Pago móvil / Zelle
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title reveal">Nuestro <span>Espacio</span></h2>
+      <p class="section-subtitle reveal">Así es Tropisabor</p>
+      <div class="home-gallery reveal">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Local" class="home-gallery-img">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop" alt="Ambiente" class="home-gallery-img">
+        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop" alt="Cocina" class="home-gallery-img">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title reveal">Lo que dicen <span>nuestros clientes</span></h2>
+      <p class="section-subtitle reveal">Algunas opiniones de quienes ya nos visitaron</p>
+      <div class="home-resenas reveal">
+        <div class="home-resena-card">
+          <div class="home-resena-stars">★★★★★</div>
+          <p class="home-resena-text">"Las mejores pizzas de Maracay. La masa es delgada y crocante, ingredientes frescos. ¡Súper recomendada!"</p>
+          <span class="home-resena-author">— María G.</span>
+        </div>
+        <div class="home-resena-card">
+          <div class="home-resena-stars">★★★★★</div>
+          <p class="home-resena-text">"El salpicón es espectacular, los helados artesanales son una delicia. El ambiente es muy agradable."</p>
+          <span class="home-resena-author">— Carlos M.</span>
+        </div>
+        <div class="home-resena-card">
+          <div class="home-resena-stars">★★★★★</div>
+          <p class="home-resena-text">"Excelente atención y la comida es de primera. Los precios son justos. Volveré sin duda."</p>
+          <span class="home-resena-author">— José R.</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2rem">
+        <a href="#" class="btn btn-primary reveal" data-view="resenas">Ver todas las reseñas</a>
+      </div>
+    </div>
+
+    <div class="section" style="background:var(--bg-alt)">
+      <h2 class="section-title reveal">Visítanos</h2>
+      <div class="home-ubicacion reveal">
+        <iframe class="ubicacion-map" id="homeMapFrame" allowfullscreen loading="lazy"></iframe>
+        <div class="home-ubicacion-info">
+          <div class="ubicacion-item">
+            <div class="ubicacion-icon">📍</div>
+            <div>
+              <div class="ubicacion-label">Dirección</div>
+              <div class="ubicacion-value" id="homeDir">CC Las Américas, Av. Las Delicias, Maracay</div>
+            </div>
+          </div>
+          <div class="ubicacion-item">
+            <div class="ubicacion-icon">🕐</div>
+            <div>
+              <div class="ubicacion-label">Horario</div>
+              <div class="ubicacion-value" id="homeHorario">Lun a Sáb 9:00 - 21:30</div>
+            </div>
+          </div>
+          <div class="ubicacion-item">
+            <div class="ubicacion-icon">📞</div>
+            <div>
+              <div class="ubicacion-label">Teléfono</div>
+              <div class="ubicacion-value" id="homeTel">+58 414-4629419</div>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary" data-view="pedidos">Pide por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIEW: MENU ========== -->
+  <section class="page-view" id="view-menu">
+    <div class="section menu-section menu-page">
+      <h2 class="section-title">Nuestro <span>Menú</span></h2>
+      <p class="section-subtitle">Explora todas nuestras categorías</p>
+      <div class="menu-tabs" id="menuTabs">
+        <button class="menu-tab active" data-cat="Pizzas">🍕 Pizzas</button>
+        <button class="menu-tab" data-cat="Postres">🍨 Postres</button>
+        <button class="menu-tab" data-cat="Bebidas">🥤 Bebidas</button>
+        <button class="menu-tab" data-cat="Combos">🎯 Combos</button>
+      </div>
+      <div id="menuCategoryHero">
+        <div class="menu-category-hero" id="menuHeroInner">
+          <img id="menuHeroImg" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=400&fit=crop" alt="">
+          <div class="menu-category-hero-overlay"></div>
+          <div class="menu-category-hero-content">
+            <h3 id="menuHeroTitle">Pizzas</h3>
+            <p id="menuHeroDesc">Masa delgada y crujiente horneada en horno de piedra</p>
+          </div>
+        </div>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========== VIEW: GALERIA ========== -->
+  <section class="page-view" id="view-galeria">
+    <div class="section galeria-page">
+      <h2 class="section-title reveal">Galería <span>Tropisabor</span></h2>
+      <p class="section-subtitle reveal">Así se ve el paraíso</p>
+      <div class="galeria-grid" id="galeriaGrid"></div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-nav prev">&#10094;</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav next">&#10095;</button>
+  </div>
+
+  <!-- ========== VIEW: RESENAS ========== -->
+  <section class="page-view" id="view-resenas">
+    <div class="section resenas-section resenas-page">
+      <h2 class="section-title reveal">Lo que dicen <span>nuestros clientes</span></h2>
+      <p class="section-subtitle reveal">La opinión de quienes ya nos han visitado</p>
+      <div class="resenas-carousel reveal">
+        <div class="resenas-track"></div>
+        <div class="resenas-dots"></div>
+      </div>
+
+      <div class="review-form reveal">
+        <h3>✍️ Deja tu reseña</h3>
+        <div class="review-form-grid">
+          <div>
+            <label>Tu nombre</label>
+            <input type="text" id="reviewName" placeholder="Ej: Ana Pérez" maxlength="50">
+          </div>
+          <div>
+            <label>Calificación</label>
+            <select id="reviewStars">
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★☆</option>
+              <option value="3">★★★☆☆</option>
+              <option value="2">★★☆☆☆</option>
+              <option value="1">★☆☆☆☆</option>
+            </select>
+          </div>
+          <div class="full">
+            <label>Tu reseña</label>
+            <textarea id="reviewText" placeholder="Cuéntanos tu experiencia..." maxlength="500"></textarea>
+          </div>
+          <div class="full">
+            <button class="btn btn-primary" id="submitReviewBtn">Enviar reseña</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIEW: PEDIDOS ========== -->
+  <section class="page-view" id="view-pedidos">
+    <div class="pedidos-hero">
+      <div class="pedidos-content">
+        <h1 class="pedidos-title">🍕 Pide tu Orden</h1>
+        <p class="pedidos-subtitle">Completa el formulario y te enviaremos la orden por WhatsApp</p>
+
+        <form class="pedidos-form" id="pedidosForm" onsubmit="return false;">
+          <h3>📋 Tus datos</h3>
+          <div class="pedidos-form-row">
+            <div class="pedidos-form-group">
+              <label>Nombre completo *</label>
+              <input type="text" id="orderName" placeholder="Tu nombre" required>
+            </div>
+            <div class="pedidos-form-group">
+              <label>Teléfono *</label>
+              <input type="tel" id="orderPhone" placeholder="0412-1234567" required>
+            </div>
+          </div>
+
+          <h3 style="margin-top:1rem">📍 Tipo de entrega</h3>
+          <div class="pedidos-radio-group">
+            <label class="pedidos-radio-label">
+              <input type="radio" name="delivery" value="Delivery" checked> 🚚 Delivery
+            </label>
+            <label class="pedidos-radio-label">
+              <input type="radio" name="delivery" value="Pickup"> 🏪 Pickup
+            </label>
+          </div>
+
+          <div class="pedidos-form-group" id="addressGroup">
+            <label>Dirección de entrega</label>
+            <input type="text" id="orderAddress" placeholder="Calle, casa, referencia">
+          </div>
+
+          <h3 style="margin-top:1rem">🛒 Tu pedido</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.8rem">Marca los productos que deseas y la cantidad</p>
+          <div class="pedidos-menu-selector" id="orderItems"></div>
+
+          <div class="pedidos-form-group">
+            <label>Instrucciones especiales</label>
+            <textarea id="orderNotes" placeholder="Ej: Sin cebolla, masa delgada, extra queso..."></textarea>
+          </div>
+
+          <button type="submit" class="pedidos-btn-submit" id="submitOrderBtn">
+            💬 Enviar pedido por WhatsApp
+          </button>
+        </form>
+
+        <div class="pedidos-success" id="pedidosSuccess">
+          <div class="pedidos-success-icon">✅</div>
+          <h3>¡Pedido enviado!</h3>
+          <p>Gracias, tu orden ha sido preparada. Te redirigiremos a WhatsApp para confirmar.</p>
+          <a href="#" class="btn btn-outline" data-view="menu">Seguir viendo el menú</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-brand">Tropisabor</h3>
+        <p class="footer-desc">Pizzería & Postres Artesanales en Maracay. Un paraíso en cada sabor.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <a href="#" data-view="home" class="footer-link">Inicio</a>
+        <a href="#" data-view="menu" class="footer-link">Menú</a>
+        <a href="#" data-view="galeria" class="footer-link">Galería</a>
+        <a href="#" data-view="resenas" class="footer-link">Reseñas</a>
+        <a href="#" data-view="pedidos" class="footer-link">Pedidos</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item">
+          <span>📍</span>
+          <span>CC Las Américas, Av. Las Delicias, Maracay</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📞</span>
+          <span>+58 414-4629419</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>🕐</span>
+          <span>Lun a Sáb 9:00 - 21:30</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="footer-social">
+          <a href="https://wa.me/584144629419" target="_blank" class="footer-social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://instagram.com/tropisabor__" target="_blank" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <strong>Tropisabor</strong> — Pizzería & Postres. Maracay, Venezuela.</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="whatsapp-float" id="whatsappFloat" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="js/data.js"></script>
+  <script>window.DATA = { CONFIG, MENU, RESENAS, GALERIA, CATEGORIAS, ICONOS_INGREDIENTES };</script>
+  <script src="js/app.js"></script>
+</body>
+</html>

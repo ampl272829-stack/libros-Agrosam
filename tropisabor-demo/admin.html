@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Tropisabor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: #f0f2f5; color: #1a1a2e; }
+    input, select, textarea, button { font-family: inherit; }
+
+    .admin-view { display: none; }
+    .admin-view.active { display: block; }
+
+    #loginView.active, #adminPanel.active { display: block; }
+    #loginView, #adminPanel { display: none; }
+
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #FF6B35, #2EC4B6);
+      padding: 2rem;
+    }
+    .login-card {
+      background: #fff; border-radius: 20px; padding: 3rem 2.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15); width: 100%; max-width: 400px;
+      text-align: center;
+    }
+    .login-card h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .login-card p { color: #6c757d; margin-bottom: 2rem; font-size: 0.9rem; }
+    .login-card input {
+      width: 100%; padding: 0.9rem 1rem; border: 2px solid #e0e0e0;
+      border-radius: 12px; font-size: 1rem; margin-bottom: 1rem;
+      transition: border-color 0.3s;
+    }
+    .login-card input:focus { outline: none; border-color: #FF6B35; }
+    .login-card button {
+      width: 100%; padding: 0.9rem; background: #FF6B35; color: #fff;
+      border: none; border-radius: 12px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: background 0.3s;
+    }
+    .login-card button:hover { background: #e55a2b; }
+    .login-error { color: #dc3545; font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2em; }
+
+    .admin-layout { display: flex; min-height: 100vh; }
+    .admin-sidebar {
+      width: 240px; background: #1a1a2e; color: #fff; padding: 2rem 0; flex-shrink: 0;
+    }
+    .admin-sidebar h2 {
+      font-family: 'Poppins', sans-serif;
+      text-align: center; margin-bottom: 2rem; font-size: 1.3rem;
+    }
+    .admin-sidebar h2 span { color: #FF6B35; }
+    .admin-nav-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 0.9rem 1.5rem; cursor: pointer; transition: background 0.3s;
+      border-left: 3px solid transparent; font-size: 0.9rem; font-weight: 500;
+    }
+    .admin-nav-item:hover { background: rgba(255,255,255,0.06); }
+    .admin-nav-item.active { background: rgba(255,107,53,0.15); border-left-color: #FF6B35; color: #FF6B35; }
+    .admin-nav-item.logout { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: auto; }
+
+    .admin-main { flex: 1; padding: 2rem; overflow-y: auto; }
+
+    .admin-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2rem;
+    }
+    .admin-header h1 { font-size: 1.6rem; }
+    .admin-header-actions { display: flex; gap: 0.5rem; }
+    .admin-btn {
+      padding: 0.6rem 1.2rem; border-radius: 10px; border: none;
+      font-weight: 600; font-size: 0.85rem; cursor: pointer;
+      background: #FF6B35; color: #fff; transition: all 0.3s;
+    }
+    .admin-btn:hover { background: #e55a2b; }
+    .admin-btn-secondary { background: #6c757d; }
+    .admin-btn-secondary:hover { background: #5a6268; }
+    .admin-btn-danger { background: #dc3545; }
+    .admin-btn-danger:hover { background: #c82333; }
+    .admin-btn-success { background: #28a745; }
+    .admin-btn-success:hover { background: #218838; }
+    .admin-btn-sm { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+
+    .admin-card {
+      background: #fff; border-radius: 16px; padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 1.5rem;
+    }
+
+    .admin-cat-group { margin-bottom: 1.5rem; }
+    .admin-cat-title {
+      font-size: 1.1rem; font-weight: 700; color: #FF6B35;
+      margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f0f0f0;
+    }
+    .admin-row {
+      display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .admin-row:last-child { border-bottom: none; }
+    .admin-thumb { width: 50px; height: 40px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+    .admin-row-info { flex: 1; }
+    .admin-row-info strong { display: block; font-size: 0.9rem; }
+    .admin-row-desc { font-size: 0.8rem; color: #6c757d; display: block; margin-top: 0.1rem; }
+    .admin-row-price { font-weight: 700; color: #FF6B35; font-size: 0.95rem; white-space: nowrap; }
+
+    .admin-filter-bar {
+      display: flex; gap: 0.8rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap;
+    }
+    .admin-filter-bar select, .admin-filter-bar input {
+      padding: 0.6rem 1rem; border: 2px solid #e0e0e0; border-radius: 10px;
+      font-size: 0.9rem; background: #fff;
+    }
+    .admin-filter-bar select:focus, .admin-filter-bar input:focus { outline: none; border-color: #FF6B35; }
+
+    .admin-form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .admin-form-grid label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; }
+    .admin-form-grid input, .admin-form-grid select, .admin-form-grid textarea {
+      width: 100%; padding: 0.7rem 0.8rem; border: 2px solid #e0e0e0;
+      border-radius: 10px; font-size: 0.9rem; transition: border-color 0.3s;
+    }
+    .admin-form-grid input:focus, .admin-form-grid select:focus, .admin-form-grid textarea:focus {
+      outline: none; border-color: #FF6B35;
+    }
+    .admin-form-grid textarea { resize: vertical; min-height: 80px; }
+    .admin-form-grid .full { grid-column: 1 / -1; }
+
+    .admin-form-actions { display: flex; gap: 0.8rem; margin-top: 1rem; justify-content: flex-end; }
+
+    .admin-modal {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); z-index: 3000; display: flex;
+      align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .admin-modal.open { opacity: 1; pointer-events: all; }
+    .admin-modal-content {
+      background: #fff; border-radius: 20px; padding: 2rem;
+      width: 90%; max-width: 550px; max-height: 90vh; overflow-y: auto;
+    }
+    .admin-modal-content h2 { margin-bottom: 1.2rem; }
+
+    .admin-config-item {
+      margin-bottom: 1.2rem;
+    }
+    .admin-config-item label {
+      display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;
+    }
+    .admin-config-item input, .admin-config-item textarea {
+      width: 100%; padding: 0.7rem 0.8rem; border: 2px solid #e0e0e0;
+      border-radius: 10px; font-size: 0.9rem;
+    }
+    .admin-config-item input:focus, .admin-config-item textarea:focus {
+      outline: none; border-color: #FF6B35;
+    }
+
+    .admin-resena-form {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;
+    }
+    .admin-resena-form .full { grid-column: 1 / -1; }
+    .admin-resena-form label { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; display: block; }
+    .admin-resena-form input, .admin-resena-form select, .admin-resena-form textarea {
+      width: 100%; padding: 0.6rem 0.8rem; border: 2px solid #e0e0e0;
+      border-radius: 10px; font-size: 0.9rem;
+    }
+    .admin-resena-form textarea { resize: vertical; min-height: 70px; }
+
+    .admin-import { display: none; }
+
+    @media (max-width: 768px) {
+      .admin-layout { flex-direction: column; }
+      .admin-sidebar { width: 100%; padding: 1rem 0; display: flex; flex-wrap: wrap; }
+      .admin-sidebar h2 { width: 100%; margin-bottom: 0.5rem; }
+      .admin-nav-item { padding: 0.6rem 1rem; font-size: 0.8rem; }
+      .admin-nav-item.logout { margin-top: 0; border-top: none; }
+      .admin-main { padding: 1rem; }
+      .admin-form-grid { grid-template-columns: 1fr; }
+      .admin-resena-form { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="admin-view active" id="loginView">
+    <div class="login-wrapper">
+      <div class="login-card">
+        <h1>🔐 Admin</h1>
+        <p>Tropisabor — Panel de administración</p>
+        <form id="loginForm">
+          <input type="password" id="loginPass" placeholder="Contraseña" required>
+          <button type="submit">Ingresar</button>
+          <div class="login-error" id="loginError"></div>
+        </form>
+        <p style="margin-top:1.5rem;font-size:0.8rem;color:#6c757d">
+          <a href="index.html" style="color:#FF6B35;text-decoration:none">← Volver al sitio</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-view" id="adminPanel">
+    <div class="admin-layout">
+      <div class="admin-sidebar">
+        <h2><span>Tropi</span>sabor</h2>
+        <div class="admin-nav-item active" data-view="viewMenu">📋 Menú</div>
+        <div class="admin-nav-item" data-view="viewResenas">⭐ Reseñas</div>
+        <div class="admin-nav-item" data-view="viewConfig">⚙️ Configuración</div>
+        <div class="admin-nav-item logout" id="logoutBtn">🚪 Cerrar sesión</div>
+      </div>
+
+      <div class="admin-main">
+
+        <!-- VIEW MENU -->
+        <div class="admin-view active" id="viewMenu">
+          <div class="admin-header">
+            <h1>📋 Gestión del Menú</h1>
+            <div class="admin-header-actions">
+              <button class="admin-btn" id="addItemBtn">+ Agregar Item</button>
+              <button class="admin-btn admin-btn-secondary" id="exportBtn">Exportar</button>
+              <button class="admin-btn admin-btn-secondary" id="importBtn">Importar</button>
+              <input type="file" class="admin-import" id="importFile" accept=".json">
+            </div>
+          </div>
+
+          <div class="admin-filter-bar">
+            <label>Filtrar por categoría:</label>
+            <select id="menuCatFilter">
+              <option value="todas">Todas las categorías</option>
+            </select>
+          </div>
+
+          <div class="admin-card" id="adminMenuList"></div>
+        </div>
+
+        <!-- VIEW RESENAS -->
+        <div class="admin-view" id="viewResenas">
+          <div class="admin-header">
+            <h1>⭐ Gestión de Reseñas</h1>
+          </div>
+
+          <div class="admin-card">
+            <h3 style="margin-bottom:1rem">Agregar nueva reseña</h3>
+            <div class="admin-resena-form">
+              <div>
+                <label>Nombre del cliente</label>
+                <input type="text" id="nuevaResenaNombre" placeholder="Ej: María G.">
+              </div>
+              <div>
+                <label>Estrellas</label>
+                <select id="nuevaResenaEstrellas">
+                  <option value="5">5 ★★★★★</option>
+                  <option value="4">4 ★★★★</option>
+                  <option value="3">3 ★★★</option>
+                  <option value="2">2 ★★</option>
+                  <option value="1">1 ★</option>
+                </select>
+              </div>
+              <div class="full">
+                <label>Texto de la reseña</label>
+                <textarea id="nuevaResenaTexto" placeholder="Escribe la reseña..."></textarea>
+              </div>
+              <div class="full">
+                <button class="admin-btn" id="addResenaBtn">Agregar Reseña</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card" id="adminResenasList"></div>
+        </div>
+
+        <!-- VIEW CONFIG -->
+        <div class="admin-view" id="viewConfig">
+          <div class="admin-header">
+            <h1>⚙️ Configuración</h1>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-config-item">
+              <label>Contraseña del panel</label>
+              <input type="text" id="cfgPassword" placeholder="Nueva contraseña">
+            </div>
+            <div class="admin-config-item">
+              <label>WhatsApp (número sin +)</label>
+              <input type="text" id="cfgWhatsapp" placeholder="584144629419">
+            </div>
+            <div class="admin-config-item">
+              <label>Instagram (usuario sin @)</label>
+              <input type="text" id="cfgInstagram" placeholder="tropisabor__">
+            </div>
+            <div class="admin-config-item">
+              <label>Teléfono (display)</label>
+              <input type="text" id="cfgTelefono" placeholder="+58 414-4629419">
+            </div>
+            <div class="admin-config-item">
+              <label>Dirección</label>
+              <input type="text" id="cfgDireccion" placeholder="CC Las Américas, Av. Las Delicias, Maracay">
+            </div>
+            <div class="admin-config-item">
+              <label>Horario</label>
+              <input type="text" id="cfgHorario" placeholder="Lun a Sáb 9:00 - 21:30">
+            </div>
+            <button class="admin-btn" id="saveConfigBtn">Guardar Configuración</button>
+          </div>
+
+          <div class="admin-card">
+            <h3 style="margin-bottom:0.5rem">Vista previa de contacto</h3>
+            <p>WhatsApp: <a href="#" id="cfgWhatsappLink" target="_blank"><span id="cfgWhatsappDisplay"></span></a></p>
+            <p style="font-size:0.85rem;color:#6c757d">Los cambios se reflejan en el sitio público después de editar data.js o importar el JSON exportado.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR ITEM -->
+  <div class="admin-modal" id="editItemModal">
+    <div class="admin-modal-content">
+      <h2>✏️ Editar Item del Menú</h2>
+      <input type="hidden" id="editItemId">
+      <div class="admin-form-grid">
+        <div>
+          <label>Categoría</label>
+            <select id="editItemCat">
+            <option value="Pizzas">Pizzas</option>
+            <option value="Postres">Postres</option>
+            <option value="Bebidas">Bebidas</option>
+            <option value="Combos">Combos</option>
+          </select>
+        </div>
+        <div>
+          <label>Precio ($)</label>
+          <input type="number" step="0.01" id="editItemPrecio" placeholder="10.00">
+        </div>
+        <div class="full">
+          <label>Nombre del plato</label>
+          <input type="text" id="editItemNombre" placeholder="Ej: Pizza Margarita">
+        </div>
+        <div class="full">
+          <label>Descripción</label>
+          <textarea id="editItemDesc" placeholder="Descripción breve..."></textarea>
+        </div>
+        <div class="full">
+          <label>URL de la imagen</label>
+          <input type="url" id="editItemImg" placeholder="https://images.unsplash.com/...">
+        </div>
+      </div>
+      <div class="admin-form-actions">
+        <button class="admin-btn admin-btn-secondary" id="cancelItemBtn">Cancelar</button>
+        <button class="admin-btn" id="saveItemBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script>window.DATA = { CONFIG, MENU, RESENAS, GALERIA, CATEGORIAS, ICONOS_INGREDIENTES };</script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
