@@ -1,13 +1,13 @@
 const productos = [
   {
     id: 'cargador-20w',
-    nombre: 'Cargador USB-C 20W',
+    nombre: 'Cargador de iPhone USB-C 35W',
     descripcion: 'Cargador rápido para iPhone 15 y modelos anteriores',
-    descripcionLarga: 'Cargador compacto de 20W con puerto USB-C. Carga tu iPhone hasta un 50% en solo 30 minutos. Compatible con todos los modelos de iPhone desde el 8 en adelante. Diseño compacto ideal para llevar a cualquier parte. Incluye protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
-    precio: 15.99,
+    descripcionLarga: 'Cargador compacto de 35W con puerto USB-C. Carga tu iPhone hasta un 50% en solo 30 minutos. Compatible con todos los modelos de iPhone desde el 8 en adelante. Diseño compacto ideal para llevar a cualquier parte. Incluye protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
+    precio: 12,
     categoria: 'cargadores',
     img: 'img/cargador-20w.svg',
-    imagenes: ['img/cargador-20w.svg', 'img/cargador-20w-2.svg', 'img/cargador-20w-3.svg'],
+    imagenes: ['img/cargador-20w.svg', 'img/cargador-20w.svg', 'img/cargador-20w.svg'],
   },
   {
     id: 'cargador-dual',
@@ -18,6 +18,7 @@ const productos = [
     categoria: 'cargadores',
     img: 'img/cargador-dual.svg',
     imagenes: ['img/cargador-dual.svg', 'img/cargador-dual-2.svg', 'img/cargador-dual-3.svg'],
+    visible: false,
   },
   {
     id: 'cargador-coche',
@@ -28,6 +29,7 @@ const productos = [
     categoria: 'cargadores',
     img: 'img/cargador-coche.svg',
     imagenes: ['img/cargador-coche.svg', 'img/cargador-coche-2.svg', 'img/cargador-coche-3.svg'],
+    visible: false,
   },
   {
     id: 'cable-lightning',
@@ -38,6 +40,7 @@ const productos = [
     categoria: 'cables',
     img: 'img/cable-lightning.svg',
     imagenes: ['img/cable-lightning.svg', 'img/cable-lightning-2.svg', 'img/cable-lightning-3.svg'],
+    visible: false,
   },
   {
     id: 'cable-usbc',
@@ -48,6 +51,7 @@ const productos = [
     categoria: 'cables',
     img: 'img/cable-usbc.svg',
     imagenes: ['img/cable-usbc.svg', 'img/cable-usbc-2.svg', 'img/cable-usbc-3.svg'],
+    visible: false,
   },
   {
     id: 'cable-3en1',
@@ -58,13 +62,14 @@ const productos = [
     categoria: 'cables',
     img: 'img/cable-3en1.svg',
     imagenes: ['img/cable-3en1.svg', 'img/cable-3en1-2.svg', 'img/cable-3en1-3.svg'],
+    visible: false,
   },
   {
     id: 'funda-silicona',
     nombre: 'Funda de Silicona',
     descripcion: 'Funda suave al tacto, protección completa contra golpes',
     descripcionLarga: 'Funda de silicona de alta calidad con acabado suave al tacto. Protege tu iPhone contra caídas y golpes con bordes reforzados y elevación para la cámara. Disponible en múltiples colores. No se desliza de las manos. Fácil de poner y quitar sin rayones.',
-    precio: 12.99,
+    precio: 7,
     categoria: 'fundas',
     img: 'img/funda-silicona.svg',
     imagenes: ['img/funda-silicona.svg', 'img/funda-silicona-2.svg', 'img/funda-silicona-3.svg'],
@@ -78,6 +83,7 @@ const productos = [
     categoria: 'fundas',
     img: 'img/funda-transparente.svg',
     imagenes: ['img/funda-transparente.svg', 'img/funda-transparente-2.svg', 'img/funda-transparente-3.svg'],
+    visible: false,
   },
   {
     id: 'funda-billetera',
@@ -88,6 +94,7 @@ const productos = [
     categoria: 'fundas',
     img: 'img/funda-billetera.svg',
     imagenes: ['img/funda-billetera.svg', 'img/funda-billetera-2.svg', 'img/funda-billetera-3.svg'],
+    visible: false,
   },
   {
     id: 'vidrio-templado',
@@ -98,6 +105,7 @@ const productos = [
     categoria: 'proteccion',
     img: 'img/vidrio-templado.svg',
     imagenes: ['img/vidrio-templado.svg', 'img/vidrio-templado-2.svg', 'img/vidrio-templado-3.svg'],
+    visible: false,
   },
   {
     id: 'cargador-inalambrico',
@@ -108,6 +116,7 @@ const productos = [
     categoria: 'inalambrico',
     img: 'img/cargador-inalambrico.svg',
     imagenes: ['img/cargador-inalambrico.svg', 'img/cargador-inalambrico-2.svg', 'img/cargador-inalambrico-3.svg'],
+    visible: false,
   },
   {
     id: 'powerbank-10000',
@@ -118,26 +127,29 @@ const productos = [
     categoria: 'baterias',
     img: 'img/powerbank-10000.svg',
     imagenes: ['img/powerbank-10000.svg', 'img/powerbank-10000-2.svg', 'img/powerbank-10000-3.svg'],
+    visible: false,
   },
   {
-    id: 'cargador-tecno',
-    nombre: 'Cargador Tecno Fast Charge',
-    descripcion: 'Carga rápida para Tecno y dispositivos Android',
-    descripcionLarga: 'Cargador con carga rápida compatible con celulares Tecno, Infinix e Itel y cualquier dispositivo Android con puerto USB. Diseño compacto que no estorba en el tomacorriente y es fácil de llevar. Incluye protección contra sobrecarga, cortocircuito y sobrecalentamiento para cuidar la batería de tu equipo.',
-    precio: 11.99,
+    id: 'cargador-iphone-25w',
+    nombre: 'Cargador de iphone 25w',
+    descripcion: 'Carga rápida para tu iPhone',
+    descripcionLarga: 'Cargador de 25W con puerto USB-C para cargar tu iPhone rápido y seguro. Compatible con iPhone 8 en adelante y con los modelos iPhone 15 y 16 de USB-C. Diseño compacto que cabe en cualquier bolsillo. Protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
+    precio: 8,
+    categoria: 'cargadores',
+    img: 'img/cargador-iphone-25w.svg',
+    imagenes: ['img/cargador-iphone-25w.svg', 'img/cargador-iphone-25w.svg', 'img/cargador-iphone-25w.svg'],
+    visible: false,
+  },
+  {
+    id: 'cargador-tecno-45w',
+    nombre: 'Cargador Tecno de 45w',
+    descripcion: 'Lo más rápido y confiable para tu Tecno',
+    descripcionLarga: 'Cargador de 45W con carga rápida compatible con celulares Tecno, Infinix e Itel y cualquier dispositivo Android con puerto USB-C. Carga hasta 45W para equipos compatibles. Diseño compacto y resistente. Protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
+    precio: 8,
     categoria: 'cargadores',
     img: 'img/cargador-tecno.svg',
     imagenes: ['img/cargador-tecno.svg', 'img/cargador-tecno.svg', 'img/cargador-tecno.svg'],
-  },
-  {
-    id: 'cargador-iphone-lightning',
-    nombre: 'Cargador iPhone Lightning',
-    descripcion: 'Cargador para iPhone con conector Lightning, sin USB-C',
-    descripcionLarga: 'Cargador clásico para iPhone con conector Lightning integrado, compatible con todos los modelos de iPhone con puerto Lightning (del 5 al 14 y versiones anteriores). Carga estable y segura con protección contra sobrecarga y sobrecalentamiento. Longitud ideal para cargar desde el sofá o la mesita de noche.',
-    precio: 14.99,
-    categoria: 'cargadores',
-    img: 'img/cargador-iphone-lightning.svg',
-    imagenes: ['img/cargador-iphone-lightning.svg', 'img/cargador-iphone-lightning.svg', 'img/cargador-iphone-lightning.svg'],
+    visible: false,
   },
 ];
 

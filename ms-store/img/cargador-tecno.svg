@@ -12,5 +12,5 @@
   <rect x="160" y="277" width="80" height="14" rx="4" fill="#1a1a2e"/>
   <circle cx="200" cy="195" r="38" fill="#dff0fd"/>
   <path d="M188 172 v28 h-12 l24 32 v-28 h12 z" fill="url(#bolt)"/>
-  <text x="200" y="322" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#8a8aaa" font-weight="600">Tecno · Fast Charge</text>
+  <text x="200" y="322" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#8a8aaa" font-weight="600">Tecno · 45W</text>
 </svg>
