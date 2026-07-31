@@ -38,7 +38,22 @@ create policy "leer admin pedidos" on public.pedidos for select to authenticated
 drop policy if exists "borrar admin pedidos" on public.pedidos;
 create policy "borrar admin pedidos" on public.pedidos for delete to authenticated using (true);
 
--- 3) Bucket de imágenes (público para leer, solo admin sube/borra)
+-- 3) Tabla de comentarios
+create table if not exists public.comentarios (
+  id bigint generated always as identity primary key,
+  producto_id text not null,
+  nombre text not null default 'Anónimo',
+  texto text not null,
+  estrellas int not null default 5,
+  fecha timestamptz default now()
+);
+alter table public.comentarios enable row level security;
+drop policy if exists "leer comentarios publico" on public.comentarios;
+create policy "leer comentarios publico" on public.comentarios for select using (true);
+drop policy if exists "insertar comentarios publico" on public.comentarios;
+create policy "insertar comentarios publico" on public.comentarios for insert to anon with check (true);
+
+-- 4) Bucket de imágenes (público para leer, solo admin sube/borra)
 insert into storage.buckets (id, name, public) values ('imagenes', 'imagenes', true)
 on conflict (id) do nothing;
 drop policy if exists "leer imagenes publico" on storage.objects;

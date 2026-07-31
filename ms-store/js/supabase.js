@@ -125,3 +125,39 @@ async function sbSubirImagen(file, token) {
   if (!res.ok) throw new Error('Error al subir imagen');
   return SUPABASE_URL + '/storage/v1/object/public/imagenes/' + nombre;
 }
+
+async function sbEliminarImagen(url, token) {
+  const nombre = decodeURIComponent(url.split('/').pop());
+  const res = await fetch(SUPABASE_URL + '/storage/v1/object/imagenes/' + nombre, {
+    method: 'DELETE',
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: 'Bearer ' + token,
+    },
+  });
+  if (!res.ok && res.status !== 404) throw new Error('Error al borrar imagen');
+  return true;
+}
+
+async function sbComentarios(productoId) {
+  const data = await sbREST('/rest/v1/comentarios?select=*&producto_id=eq.' + encodeURIComponent(productoId) + '&order=fecha.desc');
+  return data.map(c => ({
+    id: c.id,
+    nombre: c.nombre,
+    texto: c.texto,
+    estrellas: c.estrellas,
+    fecha: c.fecha,
+  }));
+}
+
+async function sbCrearComentario(comentario) {
+  await sbREST('/rest/v1/comentarios', {
+    method: 'POST',
+    body: {
+      producto_id: comentario.productoId,
+      nombre: comentario.nombre,
+      texto: comentario.texto,
+      estrellas: comentario.estrellas,
+    },
+  });
+}

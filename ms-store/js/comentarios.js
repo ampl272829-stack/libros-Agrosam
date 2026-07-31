@@ -1,27 +1,38 @@
 const COMENTARIOS_KEY = 'mp_comentarios';
 
-function obtenerComentarios(productoId) {
+async function obtenerComentarios(productoId) {
+  if (USAR_SUPABASE) {
+    try {
+      return await sbComentarios(productoId);
+    } catch (_) {}
+  }
   const data = JSON.parse(localStorage.getItem(COMENTARIOS_KEY) || '{}');
   return data[productoId] || [];
 }
 
-function guardarComentario(productoId, nombre, texto, estrellas) {
-  const data = JSON.parse(localStorage.getItem(COMENTARIOS_KEY) || '{}');
-  if (!data[productoId]) data[productoId] = [];
-  data[productoId].unshift({
-    id: Date.now(),
+async function guardarComentario(productoId, nombre, texto, estrellas) {
+  const c = {
     nombre: nombre.trim() || 'Anónimo',
     texto: texto.trim(),
     estrellas: Math.min(5, Math.max(1, Math.round(estrellas))),
-    fecha: new Date().toISOString(),
-  });
+  };
+  if (USAR_SUPABASE) {
+    try {
+      await sbCrearComentario({ productoId, ...c });
+      return;
+    } catch (_) {}
+  }
+  const data = JSON.parse(localStorage.getItem(COMENTARIOS_KEY) || '{}');
+  if (!data[productoId]) data[productoId] = [];
+  data[productoId].unshift({ id: Date.now(), ...c, fecha: new Date().toISOString() });
   localStorage.setItem(COMENTARIOS_KEY, JSON.stringify(data));
 }
 
-function renderizarComentarios(productoId) {
+async function renderizarComentarios(productoId) {
   const lista = document.getElementById('comentarios-lista');
   const contador = document.getElementById('comentarios-contador');
-  const comentarios = obtenerComentarios(productoId);
+  lista.innerHTML = '<p class="comentarios-vacio">Cargando comentarios...</p>';
+  const comentarios = await obtenerComentarios(productoId);
 
   contador.textContent = comentarios.length;
 
@@ -35,7 +46,7 @@ function renderizarComentarios(productoId) {
     const date = new Date(c.fecha).toLocaleDateString('es-ES', {
       day: 'numeric', month: 'short', year: 'numeric'
     });
-    const initial = c.nombre.charAt(0).toUpperCase();
+    const initial = (c.nombre || 'A').charAt(0).toUpperCase();
     return `
       <div class="comentario-item">
         <div class="comentario-avatar">${initial}</div>
@@ -79,19 +90,19 @@ function configurarFormComentario(productoId) {
     });
   });
 
-  form.onsubmit = (e) => {
+  form.onsubmit = async (e) => {
     e.preventDefault();
     const nombre = inputNombre.value.trim() || 'Anónimo';
     const texto = inputTexto.value.trim();
     if (!texto) return;
-    guardarComentario(productoId, nombre, texto, rating);
+    await guardarComentario(productoId, nombre, texto, rating);
     inputTexto.value = '';
     if (!inputNombre.value.trim()) inputNombre.value = '';
-    renderizarComentarios(productoId);
+    await renderizarComentarios(productoId);
   };
 }
 
-function initComentarios(productoId) {
-  renderizarComentarios(productoId);
+async function initComentarios(productoId) {
+  await renderizarComentarios(productoId);
   configurarFormComentario(productoId);
 }

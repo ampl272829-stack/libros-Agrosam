@@ -240,6 +240,42 @@
     .spinner { width: 30px; height: 30px; border: 3px solid #333; border-top-color: #4a9eff; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    .galeria-admin {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      padding: 0.75rem 1rem; background: #0f0f11;
+      border-top: 1px solid #1e1e22;
+    }
+    .galeria-admin .thumb {
+      position: relative; width: 56px; height: 56px;
+      border-radius: 8px; overflow: hidden; cursor: pointer;
+      border: 2px solid transparent; transition: border-color 0.2s;
+    }
+    .galeria-admin .thumb.principal { border-color: #4a9eff; }
+    .galeria-admin .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .galeria-admin .thumb:hover .thumb-del { opacity: 1; }
+    .galeria-admin .thumb-del {
+      position: absolute; top: 2px; right: 2px; width: 18px; height: 18px;
+      border-radius: 50%; border: none; cursor: pointer;
+      background: rgba(0,0,0,0.75); color: #ff5555; font-size: 0.7rem;
+      line-height: 1; opacity: 0; transition: opacity 0.2s;
+    }
+    .galeria-admin .thumb-star {
+      position: absolute; bottom: 2px; left: 2px; font-size: 0.7rem;
+      color: #eab308; background: rgba(0,0,0,0.6); border-radius: 4px;
+      padding: 0 0.25rem; line-height: 1.4;
+    }
+    .galeria-admin .thumb-add {
+      width: 56px; height: 56px; border-radius: 8px;
+      border: 1px dashed #333; background: transparent; color: #888;
+      font-size: 1.3rem; cursor: pointer; transition: all 0.2s;
+    }
+    .galeria-admin .thumb-add:hover { border-color: #4a9eff; color: #4a9eff; }
+    .galeria-admin .galeria-titulo {
+      flex-basis: 100%; font-size: 0.65rem; color: #666;
+      text-transform: uppercase; letter-spacing: 0.3px;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+
     @media (max-width: 700px) {
       .admin-header { padding: 0.75rem 1rem; }
       .admin-main { padding: 1rem; }
@@ -520,11 +556,7 @@
       } catch (_) { toast('⚠️ Error al eliminar', 'error'); }
     }
 
-    function subirImagen(id) {
-      document.getElementById('file-' + id).click();
-    }
-
-    async function handleFile(id, file) {
+    async function handleFile(id, file, modo) {
       if (!file) return;
       const overlay = document.querySelector('#card-' + id + ' .upload-progress');
       overlay.classList.add('show');
@@ -533,12 +565,17 @@
           const url = await sbSubirImagen(file, sbToken);
           const p = productos.find(x => x.id === id);
           if (p) {
-            p.img = url;
-            p.imagenes = [url, ...(p.imagenes || []).slice(1)];
+            if (modo === 'extra') {
+              p.imagenes = [...(p.imagenes || [p.img]), url];
+            } else {
+              p.img = url;
+              p.imagenes = [url, ...(p.imagenes || [url]).filter(s => s !== url)];
+            }
             await sbGuardarProducto(p, sbToken);
           }
           document.querySelector('#card-' + id + ' .prod-img').src = url;
-          toast('🖼️ Imagen actualizada', 'success');
+          renderProductos();
+          toast(modo === 'extra' ? '🖼️ Imagen agregada' : '🖼️ Imagen actualizada', 'success');
         } else {
           const fd = new FormData();
           fd.append('imagen', file);
@@ -552,8 +589,53 @@
       overlay.classList.remove('show');
     }
 
+    function subirImagen(id) {
+      document.getElementById('file-' + id).click();
+    }
+
+    function subirImagenExtra(id) {
+      document.getElementById('file-extra-' + id).click();
+    }
+
+    async function borrarImagenAdmin(id, index) {
+      const p = productos.find(x => x.id === id);
+      if (!p) return;
+      const imgs = p.imagenes || [p.img];
+      const url = imgs[index];
+      imgs.splice(index, 1);
+      if (index === 0) {
+        p.img = imgs[0] || 'img/placeholder.svg';
+      }
+      if (USAR_SUPABASE) {
+        if (url && url.includes('/imagenes/') && !url.startsWith('img/')) {
+          try { await sbEliminarImagen(url, sbToken); } catch (_) {}
+        }
+        try { await sbGuardarProducto(p, sbToken); renderProductos(); toast('🗑️ Imagen borrada', 'success'); }
+        catch (_) { toast('⚠️ Error al guardar', 'error'); }
+      } else {
+        toast('🗑️ Imagen borrada (guarda con 💾)', 'success');
+        renderProductos();
+      }
+    }
+
+    async function hacerPrincipal(id, index) {
+      const p = productos.find(x => x.id === id);
+      if (!p || index === 0) return;
+      const imgs = p.imagenes || [p.img];
+      const [sel] = imgs.splice(index, 1);
+      imgs.unshift(sel);
+      p.img = sel;
+      p.imagenes = imgs;
+      if (USAR_SUPABASE) {
+        try { await sbGuardarProducto(p, sbToken); renderProductos(); toast('⭐ Imagen principal', 'success'); }
+        catch (_) { toast('⚠️ Error al guardar', 'error'); }
+      } else {
+        renderProductos();
+      }
+    }
+
     document.addEventListener('change', e => {
-      if (e.target.matches('.file-input')) handleFile(e.target.dataset.id, e.target.files[0]);
+      if (e.target.matches('.file-input')) handleFile(e.target.dataset.id, e.target.files[0], e.target.dataset.modo || '');
     });
 
     function limpiarForm() {
@@ -658,6 +740,18 @@
             </div>
             <button class="btn btn-amber btn-xs" onclick="guardarProducto('${p.id}')">💾 Guardar</button>
           </div>
+        </div>
+        <div class="galeria-admin" id="gal-${p.id}">
+          <span class="galeria-titulo">🖼️ Imágenes (clic para hacer principal, ✕ para borrar)</span>
+          ${(p.imagenes || [p.img]).map((src, i) => `
+            <div class="thumb ${i === 0 ? 'principal' : ''}" title="${i === 0 ? 'Principal' : 'Clic = hacer principal'}" onclick="hacerPrincipal('${p.id}', ${i})">
+              <img src="${src}" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%231a1a1e%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.1em%22 fill=%22%23333%22 font-size=%2216%22>📱</text></svg>'">
+              ${i === 0 ? '<span class="thumb-star">★</span>' : ''}
+              <button class="thumb-del" title="Borrar imagen" onclick="event.stopPropagation();borrarImagenAdmin('${p.id}', ${i})">✕</button>
+            </div>
+          `).join('')}
+          <button class="thumb-add" title="Agregar imagen" onclick="subirImagenExtra('${p.id}')">＋</button>
+          <input type="file" class="file-input" id="file-extra-${p.id}" data-id="${p.id}" data-modo="extra" accept="image/svg+xml,image/png,image/jpeg,image/webp" style="display:none">
         </div>
       `}).join('');
     }
