@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f8f9fc"/><stop offset="100%" stop-color="#eeeef4"/></linearGradient></defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <path d="M40 320 Q40 240 340 60" stroke="#e8e8f0" stroke-width="6" fill="none"/>
+  <rect x="30" y="310" width="30" height="30" rx="4" fill="#1a1a2e"/>
+  <rect x="330" y="40" width="40" height="30" rx="4" fill="#fff" stroke="#e8e8f0" stroke-width="1"/>
+  <rect x="338" y="45" width="24" height="20" rx="3" fill="#1a1a2e"/>
+  <text x="200" y="210" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#8a8aaa" font-weight="600">USB-C 60W</text>
+</svg>
