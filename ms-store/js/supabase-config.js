@@ -9,5 +9,5 @@
 // Si las dos quedan vacías, la tienda funciona en modo local
 // (js/data.js + localStorage) sin Supabase.
 
-const SUPABASE_URL = '';
-const SUPABASE_ANON_KEY = '';
+const SUPABASE_URL = 'https://llxrwmgfkieqbzygorgg.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_spBjvF2Cf92l41bDBmEFBw_bLOSCiXU';
