@@ -768,7 +768,7 @@
       if (USAR_SUPABASE) {
         try {
           productos = await sbProductos();
-          document.getElementById('btn-seed').style.display = productos.length ? 'none' : 'inline-flex';
+          document.getElementById('btn-seed').style.display = 'inline-flex';
           renderProductos();
           document.getElementById('prod-count').textContent = productos.length;
           return;
