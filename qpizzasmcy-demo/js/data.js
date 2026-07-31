@@ -5,7 +5,7 @@ const CONFIG = {
   telefono: '+58 414-4629419',
   direccion: 'CC Las Américas, Av. Las Delicias, Maracay 2101, Aragua, Venezuela',
   horario: 'Lun a Sáb 9:00 - 21:30, Dom 9:00 - 21:00',
-  coordenadas: { lat: 10.2642516, lng: -67.6199479 }
+  coordenadas: { lat: 10.2605669, lng: -67.6286334 }
 };
 
 const CATEGORIAS = ['Pizzas', 'Postres', 'Bebidas', 'Combos'];

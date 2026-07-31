@@ -4,7 +4,7 @@
   let CFG, MENU, RESENAS;
 
   function loadData() {
-    const stored = localStorage.getItem('tropisabor_admin');
+    const stored = localStorage.getItem('qpizzasmcy_admin');
     if (stored) {
       const data = JSON.parse(stored);
       CFG = data.CONFIG;
@@ -18,7 +18,7 @@
   }
 
   function saveData() {
-    localStorage.setItem('tropisabor_admin', JSON.stringify({ CONFIG: CFG, MENU, RESENAS }));
+    localStorage.setItem('qpizzasmcy_admin', JSON.stringify({ CONFIG: CFG, MENU, RESENAS }));
   }
 
   function showView(id) {
@@ -179,7 +179,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'tropisabor-data.json';
+    a.download = 'qpizzasmcy-data.json';
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -247,7 +247,7 @@
     });
 
     document.getElementById('logoutBtn').addEventListener('click', () => {
-      localStorage.removeItem('tropisabor_admin');
+      localStorage.removeItem('qpizzasmcy_admin');
       loginView.classList.add('active');
       adminPanel.classList.remove('active');
     });

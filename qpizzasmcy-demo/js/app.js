@@ -2,11 +2,11 @@
   'use strict';
 
   const DATA = window.DATA || {};
-  const USER_REVIEWS_KEY = 'tropisabor_user_reviews';
+  const USER_REVIEWS_KEY = 'qpizzasmcy_user_reviews';
 
   function initDarkMode() {
     const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('tropisabor_theme');
+    const saved = localStorage.getItem('qpizzasmcy_theme');
 
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -14,7 +14,7 @@
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
       toggle.textContent = '🌙';
-      localStorage.setItem('tropisabor_theme', 'light');
+      localStorage.setItem('qpizzasmcy_theme', 'light');
     }
 
     toggle.addEventListener('click', () => {
@@ -22,11 +22,11 @@
       if (current === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
         toggle.textContent = '🌙';
-        localStorage.setItem('tropisabor_theme', 'light');
+        localStorage.setItem('qpizzasmcy_theme', 'light');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         toggle.textContent = '☀️';
-        localStorage.setItem('tropisabor_theme', 'dark');
+        localStorage.setItem('qpizzasmcy_theme', 'dark');
       }
     });
   }
@@ -371,7 +371,7 @@
 
       const total = items.reduce((sum, i) => sum + i.precio * i.qty, 0);
 
-      let msg = `🍕 *NUEVO PEDIDO - Tropisabor*\n\n`;
+      let msg = `🍕 *NUEVO PEDIDO - Q'pizzasmcy*\n\n`;
       msg += `👤 *Nombre:* ${name}\n`;
       msg += `📱 *Teléfono:* ${phone}\n`;
       msg += `📍 *Tipo:* ${delivery}\n`;
