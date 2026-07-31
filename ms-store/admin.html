@@ -744,14 +744,24 @@
       if (!USAR_SUPABASE) return;
       try {
         const r = await fetch('js/data.js');
-        if (!r.ok) throw new Error();
+        if (!r.ok) throw new Error('No se pudo leer js/data.js');
         const txt = await r.text();
-        const fn = new Function(txt + '; return {productos};');
-        const base = fn().productos;
-        for (const p of base) await sbGuardarProducto(p, sbToken);
-        toast('✅ Catálogo importado', 'success');
+        const sinAuto = txt.replace(/;\s*\(async\s*\(\)\s*=>\s*\{[\s\S]*$/, '');
+        const fn = new Function(sinAuto + '; return {productos};');
+        const base = fn().productos.slice();
+        let importados = 0, errores = [];
+        for (const p of base) {
+          try {
+            await sbGuardarProducto(p, sbToken);
+            importados++;
+          } catch (e) {
+            errores.push(p.id + ': ' + (e.message || e));
+          }
+        }
+        if (errores.length) toast('⚠️ ' + importados + ' importados. Errores: ' + errores.join(' | '), 'error');
+        else toast('✅ Catálogo importado (' + importados + ')', 'success');
         await cargarProductos();
-      } catch (_) { toast('⚠️ Error al importar', 'error'); }
+      } catch (e) { toast('⚠️ Error al importar: ' + (e.message || e), 'error'); }
     }
 
     async function cargarProductos() {
