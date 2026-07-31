@@ -133,7 +133,7 @@ const productos = [
     id: 'cargador-iphone-25w',
     nombre: 'Cargador de iphone 25w',
     descripcion: 'Carga rápida para tu iPhone',
-    descripcionLarga: 'Cargador de 25W con puerto lightning para cargar tu iPhone rápido y seguro. Compatible con iPhone 6 en hasta 14 Pro Max. Protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
+    descripcionLarga: 'Cargador de 25W con puerto lightning para cargar tu iPhone rápido y seguro. Compatible con iPhone 6 hasta 14 Pro Max. Protección contra sobrecarga, cortocircuito y sobrecalentamiento.',
     precio: 8,
     categoria: 'cargadores',
     img: 'img/cargador-iphone-25w.svg',
