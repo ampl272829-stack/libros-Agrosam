@@ -138,7 +138,6 @@ const productos = [
     categoria: 'cargadores',
     img: 'img/cargador-iphone-25w.svg',
     imagenes: ['img/cargador-iphone-25w.svg', 'img/cargador-iphone-25w.svg', 'img/cargador-iphone-25w.svg'],
-    visible: false,
   },
   {
     id: 'cargador-tecno-45w',
@@ -149,7 +148,6 @@ const productos = [
     categoria: 'cargadores',
     img: 'img/cargador-tecno.svg',
     imagenes: ['img/cargador-tecno.svg', 'img/cargador-tecno.svg', 'img/cargador-tecno.svg'],
-    visible: false,
   },
 ];
 
