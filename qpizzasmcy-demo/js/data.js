@@ -1,9 +1,9 @@
 const CONFIG = {
   password: 'admin123',
-  whatsapp: '584144629419',
+  whatsapp: '584121414613',
   instagram: 'tropisabor__',
-  telefono: '+58 414-4629419',
-  direccion: 'CC Las Américas, Av. Las Delicias, Maracay 2101, Aragua, Venezuela',
+  telefono: '+58 412-1414613',
+  direccion: '26 Calle Lara, Maracay 0243, Aragua',
   horario: 'Lun a Sáb 9:00 - 21:30, Dom 9:00 - 21:00',
   coordenadas: { lat: 10.2605669, lng: -67.6286334 }
 };
