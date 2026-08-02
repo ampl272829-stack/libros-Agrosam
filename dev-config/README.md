@@ -38,7 +38,24 @@ dev/config/
 
 ## Cómo restaurar (en un Arch recién instalado)
 
-### 1. Paquetes
+### ⚡ FORMA FÁCIL (recomendada)
+
+```bash
+# 1. Obtener el respaldo
+git clone <tu-repo> ~/dev/config
+cd ~/dev/config
+
+# 2. ¡Instalar TODO con un menú guiado!
+./instalar-todo.sh
+```
+
+Esto instala paquetes, dotfiles, GNOME, extensiones, servicios, scripts,
+whisper y wallpaper. También puedes ejecutar `./instalar-todo.sh todo` para
+instalarlo todo de una vez.
+
+### ⚙️ Manual (paso a paso, por si quieres control total)
+
+#### 1. Paquetes
 
 ```bash
 # Paquetes oficiales
@@ -48,17 +65,16 @@ sudo pacman -S --needed - < paquetes/paquetes-oficiales.txt
 yay -S --needed - < paquetes/paquetes-aur.txt
 ```
 
-### 2. Dotfiles (terminal, ghostty, kitty, zsh)
+#### 2. Dotfiles (terminal, ghostty, kitty, zsh)
 
 ```bash
-git clone <tu-repo> ~/dev/config
 cd ~/dev/config/dotfiles
 ./install.sh
 ```
 
 Esto crea los symlinks de ghostty, kitty, btop, zellij y zsh en `~/.config`.
 
-### 3. GNOME (escritorio, extensiones, fondo, atajos)
+#### 3. GNOME (escritorio, extensiones, fondo, atajos)
 
 ```bash
 # Restaurar todo el dconf (temas, dock, fondo, atajos, extensiones...)
@@ -74,7 +90,7 @@ tar xzf gnome/extensiones-gnome.tgz -C ~/.local/share/gnome-shell/
 # Desloguear y volver a entrar para que carguen las extensiones
 ```
 
-### 4. Servicios
+#### 4. Servicios
 
 ```bash
 # Servicios de usuario
@@ -87,18 +103,19 @@ sudo cp servicios/system-ydotool-root.service /etc/systemd/system/
 sudo systemctl enable --now ydotool-root
 ```
 
-### 5. Scripts
+#### 5. Scripts
 
 ```bash
 cp scripts/dictar scripts/dictar-toggle scripts/dictar-visor.py ~/.local/bin/
 chmod +x ~/.local/bin/dictar*
 ```
 
-### 6. Whisper (modelo del dictado)
+#### 6. Whisper (modelo del dictado)
 
 ```bash
 mkdir -p ~/.local/share/whisper-models
-# Copiar ggml-small-q5_1.bin (182M) desde el sistema original
+# Copiar ggml-small-q5_1.bin (182M) desde el sistema original,
+# o el instalador lo descarga de Hugging Face automáticamente.
 cp <origen>/whisper-models/ggml-small-q5_1.bin ~/.local/share/whisper-models/
 ```
 
