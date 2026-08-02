@@ -1,0 +1,123 @@
+## Postgres Commands
+alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias pgstatus="pg_ctl -D /usr/local/var/postgres status"
+
+## MySql Commands
+alias msqlstart="mysql.server start"
+alias msqlstop="mysql.server stop"
+alias msqlstatus="mysql.server status"
+alias kiwidb="mysql -uroot kiwi_dev"
+
+## Solr Commands
+alias solrstart="bundle exec sunspot-solr start"
+alias solrrun="bundle exec sunspot-solr run"
+alias solrstop="bundle exec sunspot-solr stop"
+
+# MongoDB Commands
+alias mongostart="mongod --config /usr/local/etc/mongod.conf"
+
+# Redis Commands
+alias redistart="redis-server /usr/local/etc/redis.conf"
+
+## Rails
+alias be="bundle exec"
+alias bi="bundle install"
+alias rg="rails g"
+alias rs="rails s"
+alias rc="rails c"
+alias rn="rails new"
+alias rd="rails dbconsole"
+alias rp="rails plugin"
+alias ra="rails application"
+alias rd="rails destroy"
+alias prythis="pry -r ./config/environment"
+
+## rake
+alias rt="rake test"
+alias rtu="rake test:units"
+alias rtf="rake test:functionals"
+alias rti="rake test:integration"
+alias rro="rake routes"
+alias rdbm="rake db:migrate"
+alias rdbrb="rake db:rollback"
+alias rdbs="rake db:seed"
+alias rdbr="rake db:reset"
+alias ri="rake install"
+alias ru="rake update"
+alias rr="rake run"
+
+## Utility Aliases
+alias ~="cd ~"
+alias flushDNS="dscacheutil -flushcache"
+alias reload="source ~/.zshrc"
+
+# Zellij
+alias z="zellij"
+alias zbeek="z --layout ~/dev/config/dotfiles/zellij/layouts/beek-rails.kdl"
+alias zveinte="z --layout ~/dev/config/dotfiles/zellij/layouts/veinte-rails.kdl"
+
+# Git aliases
+alias commit="git commit -am"
+alias c="echo 'git commit -m' && git commit -m"
+alias s="echo 'git stash' && git stash"
+alias a="echo 'git add .' && git add ."
+
+# Ember aliases
+alias ets="ember test --server"
+
+# Work Aliases
+alias rdeploy="rake deploy"
+alias rsdeploy="rake stage:deploy"
+alias rkdeploy="rake kiwi:deploy"
+
+# NPM and Bower
+alias npmi="npm install"
+alias bwi="bower install"
+alias npmb="npm install && bower install"
+
+# Yarn
+alias ys='yarn start'
+alias yi='yarn install'
+alias yt='yarn test'
+alias ytw='yarn test:watch'
+
+# Docker
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dps='docker ps'
+alias dpsa='docker ps -a --format "table {{.Image}}\\t{{.Status}}\\t{{.Command}}\\t{{.Ports}}"'
+alias di='docker images'
+alias dia='docker images -a'
+alias drmia='docker rmi $(docker images -aq -f "dangling=true")'
+alias drma='docker rm $(docker ps -a -q)'
+alias dsa='docker stop $(docker ps -a -q)'
+
+# Docker Compose
+alias dcdev='docker-compose -f docker-compose.dev.yml'
+alias dcdevup='docker-compose -f docker-compose.dev.yml up'
+alias dcdevrun='docker-compose -f docker-compose.dev.yml run'
+
+# Personal aliases
+alias dotfiles="cd ~/dev/config/dotfiles"
+alias dev="cd ~/dev"
+alias config="cd ~/dev/config"
+alias labs="cd ~/dev/labs"
+alias journal="cd ~/dev/personal/journal"
+alias blog="cd ~/dev/personal/mendoza.io"
+alias personal="cd ~/dev/personal"
+alias clientes="cd ~/dev/clientes"
+alias beek="cd ~/dev/beek"
+alias ve="cd ~/dev/veinte"
+
+# kubectl
+alias kveinte="kubectl config use-context do-nyc1-veinte-001"
+alias kbeekprod="kubectl config use-context gke_beek-production_us-west1-a_beek-production"
+alias kbeekstaging="kubectl config use-context gke_beek-staging_us-west1-a_beek-staging"
+
+# Mac M1 Aliases
+alias m1="arch -x86_64"
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+# M1 Shit
+export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
+

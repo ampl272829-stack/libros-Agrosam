@@ -1,0 +1,1 @@
+['dash-to-dock@micxgx.gmail.com', 'logomenu@aryan_k', 'dash2dock-lite@icedman.github.com', 'clipboard-indicator@tudmotu.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'monitor@astraext.github.io']

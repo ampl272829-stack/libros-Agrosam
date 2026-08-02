@@ -1,0 +1,66 @@
+## Rails
+alias be="bundle exec"
+alias bi="bundle install"
+alias rs="bundle exec rails s"
+alias rc="bundle exec rails c"
+alias prom="bundle exec prometheus_exporter"
+
+## Utility Aliases
+alias ~="cd ~"
+alias reload="source ~/.zshrc"
+alias day="hyprctl hyprsunset identity"
+alias night="hyprctl hyprsunset temperature 4500"
+
+# Zellij
+alias z="zellij"
+alias zveinte="z --layout ~/dev/config/dotfiles/zellij/layouts/veinte-rails-linux.kdl"
+alias zbeek="z --layout ~/dev/config/dotfiles/zellij/layouts/beek-rails-linux.kdl"
+alias zm="z --layout ~/dev/config/dotfiles/zellij/layouts/musa-rails-linux.kdl"
+
+# Git aliases
+alias commit="git commit -am"
+alias c="echo 'git commit -m' && git commit -m"
+alias s="echo 'git stash' && git stash"
+alias a="echo 'git add .' && git add ."
+
+# Yarn
+alias ys='yarn start'
+alias yi='yarn install'
+alias yt='yarn test'
+alias ytw='yarn test:watch'
+
+# pnpm
+alias pd='pnpm dev'
+alias pi='pnpm install'
+alias pt='pnpm tsc'
+alias pf='pnpm format'
+
+# Docker
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dps='docker ps'
+alias dpsa='docker ps -a --format "table {{.Image}}\\t{{.Status}}\\t{{.Command}}\\t{{.Ports}}"'
+alias di='docker images'
+alias dia='docker images -a'
+alias drmia='docker rmi $(docker images -aq -f "dangling=true")'
+alias drma='docker rm $(docker ps -a -q)'
+alias dsa='docker stop $(docker ps -a -q)'
+
+# Personal aliases
+alias dotfiles="cd ~/dev/config/dotfiles"
+alias dev="cd ~/dev"
+alias config="cd ~/dev/config"
+alias labs="cd ~/dev/labs"
+alias talks="cd ~/dev/talks"
+alias journal="cd ~/dev/personal/journal"
+alias blog="cd ~/dev/personal/mendoza.io"
+alias personal="cd ~/dev/personal"
+alias clientes="cd ~/dev/clientes"
+alias ve="cd ~/dev/veinte"
+alias musa="cd ~/dev/musa"
+
+# kubectl
+alias kveinte="kubectl config use-context do-nyc1-veinte-001"
+alias kbeekprod="kubectl config use-context gke_beek-production_us-west1-a_beek-production"
+alias kmusastaging="kubectl config use-context gke_musa-staging_us-west1_musa-staging"
+alias kmusaprod="kubectl config use-context gke_musa-production_us-west1_musa-production"

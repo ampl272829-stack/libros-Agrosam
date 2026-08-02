@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Dictado: graba voz, transcribe con Whisper y escribe donde estés escribiendo.
+# Uso: dictar [duracion_segundos]   (por defecto hasta que sueltes Ctrl+C)
+
+set -euo pipefail
+
+MODEL="$HOME/.local/share/whisper-models/ggml-small.bin"
+TMPDIR="/tmp/dictar"
+TMP="$TMPDIR/grabacion.wav"
+export YDOTOOL_SOCKET="${YDOTOOL_SOCKET:-/tmp/.ydotool_socket}"
+
+mkdir -p "$TMPDIR"
+rm -f "$TMP"
+
+DURACION="${1:-}"
+
+echo "🎤 Graba (Ctrl+C para terminar y transcribir)..."
+if [ -n "$DURACION" ]; then
+  ffmpeg -y -f pulse -i default -ar 16000 -ac 1 "$TMP" 2>/dev/null &
+  FF_PID=$!
+  sleep "$DURACION"
+  kill "$FF_PID" 2>/dev/null || true
+  wait "$FF_PID" 2>/dev/null || true
+else
+  ffmpeg -y -f pulse -i default -ar 16000 -ac 1 "$TMP" 2>/dev/null &
+  FF_PID=$!
+  trap 'kill "$FF_PID" 2>/dev/null || true; wait "$FF_PID" 2>/dev/null || true' EXIT INT
+  echo "(grabando... presiona Ctrl+C cuando termines)"
+  wait "$FF_PID" 2>/dev/null || true
+  trap - EXIT INT
+fi
+
+echo "🧠 Transcribiendo..."
+TEXTO="$(whisper-cli -m "$MODEL" -l es --prompt "Esto es una transcripción de voz en español." -f "$TMP" -otxt -of "$TMPDIR/salida" 2>/dev/null)"
+if [ -f "$TMPDIR/salida.txt" ]; then
+  TEXTO="$(cat "$TMPDIR/salida.txt" | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
+fi
+
+if [ -z "${TEXTO:-}" ]; then
+  echo "⚠️  No se escuchó nada."
+  exit 1
+fi
+
+echo "✍️  Escribiendo: $TEXTO"
+ydotool type "$TEXTO"

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Cursor
+Exec=/opt/cursor.appimage --enable-features=UseOzonePlatform --ozone-platform=wayland %F
+Comment=Cursor AI Editor
+Icon=/opt/cursor.png
+Type=Application
+Categories=Development;

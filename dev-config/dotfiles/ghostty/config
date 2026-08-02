@@ -1,0 +1,78 @@
+command = "/home/moshe/.ghostty/launch.sh"
+window-width = 1640
+window-height = 510
+
+#comandos de teclado
+
+keybind = ctrl+z=close_surface
+keybind = ctrl+up=new_split:up
+keybind = ctrl+down=new_split:down
+keybind = ctrl+left=new_split:left
+keybind = ctrl+right=new_split:right
+keybind = ctrl+n=new_window
+keybind = ctrl+e=text:"ranger"
+
+# Pegar con Ctrl+V
+keybind = ctrl+v=paste_from_clipboard
+
+# Mover el foco entre paneles
+keybind = ctrl+shift+up=goto_split:up
+keybind = ctrl+shift+down=goto_split:down
+keybind = ctrl+shift+left=goto_split:left
+keybind = ctrl+shift+right=goto_split:right
+
+# Ir al panel anterior/siguiente (según orden de creación)
+keybind = ctrl+super+[=goto_split:previous
+keybind = ctrl+super+]=goto_split:next
+
+
+# Ir a la pestaña anterior
+keybind = ctrl+shift+tab=previous_tab
+
+# Ir a la pestaña siguiente
+keybind = ctrl+tab=next_tab
+
+# Ir directamente a la pestaña 1 a 9
+keybind = alt+1=goto_tab:1
+keybind = alt+2=goto_tab:2
+keybind = alt+3=goto_tab:3
+keybind = alt+4=goto_tab:4
+keybind = alt+5=goto_tab:5
+keybind = alt+6=goto_tab:6
+keybind = alt+7=goto_tab:7
+keybind = alt+8=goto_tab:8
+keybind = alt+9=last_tab
+
+
+background = 2b2b2b
+background-opacity = 0.7
+foreground = d4d4d4
+cursor-color = aeafad
+selection-background = 264f78
+
+font-family = FiraCode Nerd Font
+font-size = 15
+
+palette = 0=#000000
+palette = 1=#cd3131
+palette = 2=#0dbc79
+palette = 3=#e5e510
+palette = 4=#2472c8
+palette = 5=#bc3fbc
+palette = 6=#11a8cd
+palette = 7=#e5e5e5
+palette = 8=#666666
+palette = 9=#f14c4c
+palette = 10=#23d18b
+palette = 11=#f5f543
+palette = 12=#3b8eea
+palette = 13=#d670d6
+palette = 14=#29b8db
+palette = 15=#e5e5e5
+
+# Cursor para destacar el prompt (esta línea sobrescribe la anterior de cursor-color)
+cursor-color = #d4af37
+
+# Selección para facilitar copiar/pegar (esta línea sobrescribe la anterior de selection-background)
+selection-background = d4af37
+selection-foreground = ffffff

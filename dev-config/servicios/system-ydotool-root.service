@@ -1,0 +1,13 @@
+# /etc/systemd/system/ydotool-root.service
+[Unit]
+Description=ydotool daemon (root)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ydotoold
+ExecStartPost=/bin/sh -c 'chmod 666 /tmp/.ydotool_socket'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

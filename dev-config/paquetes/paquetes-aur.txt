@@ -1,0 +1,6 @@
+gnome-bluetooth
+gnome-bluetooth-debug
+spotify
+visual-studio-code-bin
+yay
+yay-debug

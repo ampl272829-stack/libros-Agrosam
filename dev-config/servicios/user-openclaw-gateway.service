@@ -1,0 +1,31 @@
+# /home/moshe/.config/systemd/user/openclaw-gateway.service
+[Unit]
+Description=OpenClaw Gateway (v2026.6.8)
+After=network-online.target
+Wants=network-online.target
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Service]
+ExecStart=/usr/bin/node /home/moshe/.npm/_npx/8718c3904bb5fece/node_modules/openclaw/dist/index.js gateway --port 18789
+Restart=always
+RestartSec=5
+RestartPreventExitStatus=78
+TimeoutStopSec=30
+TimeoutStartSec=30
+SuccessExitStatus=0 143
+KillMode=control-group
+EnvironmentFile=-/home/moshe/.openclaw/gateway.systemd.env
+Environment=OPENCLAW_SERVICE_MANAGED_ENV_KEYS=TELEGRAM_BOT_TOKEN
+Environment=HOME=/home/moshe
+Environment=TMPDIR=/tmp
+Environment=PATH=/usr/bin:/home/moshe/.npm/_npx/8718c3904bb5fece/node_modules/.bin:/home/moshe/.local/bin:/home/moshe/.npm-global/bin:/home/moshe/bin:/home/moshe/.nix-profile/bin:/usr/local/bin:/bin
+Environment=OPENCLAW_GATEWAY_PORT=18789
+Environment=OPENCLAW_SYSTEMD_UNIT=openclaw-gateway.service
+Environment="OPENCLAW_WINDOWS_TASK_NAME=OpenClaw Gateway"
+Environment=OPENCLAW_SERVICE_MARKER=openclaw
+Environment=OPENCLAW_SERVICE_KIND=gateway
+Environment=OPENCLAW_SERVICE_VERSION=2026.6.8
+
+[Install]
+WantedBy=default.target

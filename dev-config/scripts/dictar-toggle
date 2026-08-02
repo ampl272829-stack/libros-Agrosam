@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Atajo de teclado de dictado global.
+# 1ª pulsación: abre el visor y empieza a dictar (escribe en vivo).
+# 2ª pulsación: termina el dictado.
+# El visor gestiona grabación (ffmpeg), transcripción (whisper-server) y escritura (ydotool).
+
+TMPDIR="/tmp/dictar"
+LOCK="$TMPDIR/grabando.pid"
+VISOR_PID="$TMPDIR/visor.pid"
+export YDOTOOL_SOCKET="${YDOTOOL_SOCKET:-/tmp/.ydotool_socket}"
+
+mkdir -p "$TMPDIR"
+
+# --- Si ya está dictando: avisar al visor para que termine ---
+# Detección por proceso real (pgrep), no por archivo de PID (puede quedar obsoleto).
+if pgrep -f "dictar-visor.py" >/dev/null 2>&1; then
+  pkill -USR1 -f "dictar-visor.py" 2>/dev/null
+  notify-send -t 1500 "Dictado" "Enviando texto..."
+  exit 0
+fi
+
+# --- Empezar a dictar ---
+pkill -f "ffmpeg.*s16le" 2>/dev/null
+rm -f "$LOCK" "$VISOR_PID"
+setsid "$HOME/.local/bin/dictar-visor.py" >/dev/null 2>&1 < /dev/null &
+sleep 0.5
+notify-send -t 2000 "Dictado" "🎤 Habla, el texto se acumulará..."
+# Mantener vivo el scope del atajo (GNOME lo destruye al salir y mataría
+# al visor con él). Esperar mientras el visor siga en marcha.
+while pgrep -f "dictar-visor.py" >/dev/null 2>&1; do
+  sleep 1
+done
+exit 0

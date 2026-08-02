@@ -1,0 +1,14 @@
+# /home/moshe/.config/systemd/user/llama-server.service
+[Unit]
+Description=llama-server (OpenAI-compatible API)
+After=network.target
+
+[Service]
+ExecStart=/home/moshe/llama.cpp/build/bin/llama-server -m /home/moshe/llama.cpp/models/qwen2.5-3b-instruct-q4_k_m.gguf --port 11434 --host 127.0.0.1 -c 8192 -t 4 --flash-attn on -ub 512 --mlock -ngl 0
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/llama-server.log
+StandardError=append:/tmp/llama-server.log
+
+[Install]
+WantedBy=default.target
