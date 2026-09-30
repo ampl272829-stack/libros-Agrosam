@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles de la Póliza</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 30px;
+      max-width: 500px;
+    }
+    .logo-wrap {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    .logo-wrap img {
+      width: 4.8cm;
+      height: auto;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      background: rgb(52, 155, 21);
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      padding: 12px;
+      font-size: 1.1rem;
+    }
+    .card-body {
+      padding: 1.5rem;
+    }
+    .card-body p {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+    }
+    .card-body p strong {
+      color: #000;
+    }
+    .estatus-asegurado {
+      color: rgb(52, 155, 21);
+      font-weight: bold;
+    }
+    .card-footer {
+      padding: 1rem;
+      border-top: none;
+    }
+    .btn-custom {
+      background: rgb(52, 155, 21);
+      color: white;
+      width: 100%;
+      border-radius: 12px;
+      padding: 12px;
+      border: none;
+      font-size: 0.9rem;
+    }
+    .btn-custom:hover {
+      background: rgb(42, 135, 16);
+    }
+    .qr-section {
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .qr-section img {
+      width: 150px;
+      height: 150px;
+    }
+    .qr-section p {
+      margin: 8px 0 0;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    @media (max-width: 500px) {
+      .container { margin-top: 15px; }
+      .card-body { padding: 1rem; }
+      .logo-wrap img { width: 3.5cm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-wrap">
+      <img src="logo.png" alt="SeguroSRC">
+    </div>
+
+    <div class="card">
+      <div class="card-header">Detalles del Vehículo</div>
+      <div class="card-body">
+        <p><strong>Numero de poliza:</strong> 78419</p>
+        <p><strong>Estatus:</strong> <span class="estatus-asegurado">Asegurado</span></p>
+        <p><strong>Vehículo:</strong> CHEVROLET C3500 CHASSIS C</p>
+        <p><strong>Placa:</strong> A21AB1E</p>
+        <p><strong>Serial C.:</strong> 8ZCJC34R46B325583</p>
+        <p><strong>Asegurado.:</strong> Gustavo Daniel Palacios Monasterio</p>
+        <p><strong>Fecha de Vencimiento:</strong> 25-09-26</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn-custom" onclick="window.print()">🖨️ Imprimir</button>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <img src="qr.png" alt="Código QR" id="qr-img">
+      <p>Escanea para ver los detalles de la póliza</p>
+    </div>
+  </div>
+</body>
+</html>

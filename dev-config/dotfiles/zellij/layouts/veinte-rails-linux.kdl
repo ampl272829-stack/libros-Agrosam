@@ -1,0 +1,126 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+    children
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab name="system" {
+    pane split_direction="vertical"{
+      pane {
+        command "btop"
+      }
+    }
+  }
+  tab name="app" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/dev/veinte/app"
+      }
+      pane {
+        cwd "~/dev/veinte/app"
+        command "zsh"
+        args "-c" "source ~/.zshrc && pnpm dev"
+        start_suspended true
+      }
+    }
+  }
+  tab name="api" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/dev/veinte/api"
+        command "zsh"
+        args "-c" "source ~/.zshrc && bundle exec rails s"
+        start_suspended true
+      }
+      pane split_direction="horizontal" {
+        pane {
+          cwd "~/dev/veinte/api"
+        }
+        pane {
+          cwd "~/dev/veinte/api"
+          command "zsh"
+          args "-c" " source ~/.zshrc && bundle exec sidekiq"
+          start_suspended true
+        }
+      }
+    }
+  }
+  tab name="claude" {
+    pane split_direction="vertical" {
+      pane {
+          cwd "~/dev/veinte/app"
+          command "zsh"
+          args "-c" "source ~/.zshrc && claude"
+          start_suspended true
+        }
+      pane split_direction="horizontal" {
+        pane {
+          cwd "~/dev/veinte/api"
+          command "zsh"
+          args "-c" "source ~/.zshrc && claude"
+          start_suspended true
+        }
+      }
+    }
+  }
+  tab name="deploy" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/dev/veinte/api"
+      }
+      pane split_direction="horizontal" {
+        pane {
+          cwd "~/dev/veinte/api"
+          command "zsh"
+          args "-c" " source ~/.zshrc && watch kubectl get pods -n production"
+          start_suspended true
+        }
+      }
+    }
+  }
+  tab name="tunnel" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/dev/veinte/tunnel"
+        focus true
+      }
+      pane split_direction="horizontal" {
+        pane {
+          cwd "~/dev/veinte/tunnel"
+        }
+        pane {
+          cwd "~/dev/veinte/tunnel"
+          command "zsh"
+          args "-c" " source ~/.zshrc && PORT=3001 bundle exec rails s"
+          start_suspended true
+        }
+      }
+    }
+  }
+  tab name="bots" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/dev/veinte/bots"
+        focus true
+      }
+      pane split_direction="horizontal" {
+        pane {
+          cwd "~/dev/veinte/bots"
+          command "zsh"
+          args "-c" " source ~/.zshrc && yarn dev"
+          start_suspended true
+        }
+        pane {
+          cwd "~/dev/veinte/bots"
+          command "zsh"
+          args "-c" " source ~/.zshrc && yarn dev-worker"
+          start_suspended true
+        }
+      }
+    }
+  }
+}

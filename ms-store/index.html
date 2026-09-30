@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M&S Store - Accesorios iPhone</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-gradient"></div>
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#" class="logo">
+          <span class="logo-text">M&S Store</span>
+        </a>
+        <p class="header-tagline">Accesorios Para telefonos</p>
+      </div>
+      <div class="header-actions">
+        <button id="btn-theme" class="btn-theme" aria-label="Cambiar tema">🌙</button>
+        <button id="btn-carrito" class="btn-carrito" aria-label="Carrito">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span id="contador-carrito" class="contador oculto">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="tienda">
+      <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+          <span class="hero-badge">🇻🇪 Envíos a todo el país</span>
+          <h2>Accesorios premium para <span class="text-gradient">iPhone y Android</span></h2>
+          <p>Descubre la mejor selección de cargadores, cables, fundas y más al mejor precio</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-icon">🛵</span>
+              <span class="hero-stat-label">Delivery gratis a zona céntrica de Maracay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="filtros">
+        <div class="filtros-scroll">
+          <button class="filtro-btn activo" data-cat="todos">🌟 Todos</button>
+          <button class="filtro-btn" data-cat="cargadores">⚡ Cargadores</button>
+          <button class="filtro-btn" data-cat="cables">🔌 Cables</button>
+          <button class="filtro-btn" data-cat="fundas">📱 Fundas</button>
+          <button class="filtro-btn" data-cat="proteccion">🛡️ Protección</button>
+          <button class="filtro-btn" data-cat="inalambrico">🔄 Inalámbrico</button>
+          <button class="filtro-btn" data-cat="baterias">🔋 Baterías</button>
+        </div>
+      </div>
+
+      <div id="productos-grid"></div>
+    </section>
+
+    <aside id="cart-panel" class="oculto">
+      <div class="cart-header">
+        <h2>Tu Carrito 🛒</h2>
+        <button id="btn-cerrar-carrito" class="btn-cerrar" aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="cart-items"></div>
+      <div id="cart-footer" class="oculto">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button id="btn-checkout" class="btn-primary">
+          Hacer Pedido →
+        </button>
+      </div>
+      <div id="cart-vacio">
+        <div class="cart-vacio-icon">🛒</div>
+        <p>Tu carrito está vacío</p>
+        <span class="cart-vacio-sub">Agrega productos para empezar</span>
+      </div>
+    </aside>
+
+    <section id="checkout-view" class="oculto">
+      <button id="btn-volver-tienda" class="btn-volver">← Volver a la tienda</button>
+      <div class="checkout-header">
+        <h2>Confirmar Pedido</h2>
+        <p>Revisa tu pedido y completa tus datos</p>
+      </div>
+      <div id="checkout-resumen"></div>
+      <form id="checkout-form">
+        <div class="campo">
+          <label for="cf-nombre">👤 Nombre completo</label>
+          <input type="text" id="cf-nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="campo">
+          <label for="cf-telefono">📞 WhatsApp / Teléfono</label>
+          <input type="tel" id="cf-telefono" required placeholder="0412 899 1929">
+        </div>
+        <div class="campo">
+          <label for="cf-direccion">📍 Dirección de entrega</label>
+          <textarea id="cf-direccion" required placeholder="Calle, casa, referencia..."></textarea>
+        </div>
+        <div class="campo">
+          <label for="cf-notas">📝 Notas adicionales (opcional)</label>
+          <textarea id="cf-notas" placeholder="Color preferido, horario de entrega..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-enviar">
+          <span class="btn-icon">📤</span> Enviar Pedido por WhatsApp
+        </button>
+      </form>
+    </section>
+  </main>
+
+    <div id="detail-overlay" class="oculto">
+      <div id="detail-panel">
+        <button id="btn-cerrar-detalle" class="btn-cerrar-detalle" aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div id="detail-contenido"></div>
+        <div id="detail-comentarios" class="detail-comentarios oculto">
+          <div class="comentarios-header">
+            <h3>💬 Comentarios <span id="comentarios-contador">0</span></h3>
+          </div>
+          <div class="com-form-wrap">
+            <form id="form-comentario">
+              <input id="com-entrada-nombre" type="text" placeholder="Tu nombre (opcional)" class="com-input" autocomplete="off">
+              <div class="com-estrellas">
+                <span class="com-estrella" data-val="1">☆</span>
+                <span class="com-estrella" data-val="2">☆</span>
+                <span class="com-estrella" data-val="3">☆</span>
+                <span class="com-estrella" data-val="4">☆</span>
+                <span class="com-estrella" data-val="5">★</span>
+              </div>
+              <textarea id="com-entrada-texto" class="com-input" placeholder="Escribe un comentario..." required></textarea>
+              <button type="submit" class="btn-com-enviar">Enviar comentario</button>
+            </form>
+          </div>
+          <div id="comentarios-lista" class="comentarios-lista"></div>
+        </div>
+      </div>
+    </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">M&<span>S Store</span></span>
+        <p class="footer-desc">Tu tienda de confianza para accesorios iPhone</p>
+      </div>
+      <div class="footer-contact">
+        <p>📞 <a href="https://wa.me/584128991929">0412-8991929</a></p>
+        <p>📱 @mp_store</p>
+      </div>
+      <div class="footer-copy">
+        © 2026 M&S Store — Todos los derechos reservados
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="oculto"></div>
+
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/comentarios.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

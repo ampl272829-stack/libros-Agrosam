@@ -1,0 +1,34 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.minimap.enabled": true,
+  "editor.renderWhitespace": "all",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.graphql": "graphql"
+  },
+  "rubyLsp.rubyExecutablePath": "/home/luis/.local/share/mise/installs/ruby/3.2.8/bin/ruby",
+  "rubyLsp.rubyVersionManager": {
+      "identifier": "mise",
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.commandCenter": true,
+  "workbench.colorTheme": "Tokyo Hack",
+  "workbench.iconTheme": "vscode-icons",
+  "extensions.ignoreRecommendations": true,
+  "python.defaultInterpreterPath": "/bin/python"
+}

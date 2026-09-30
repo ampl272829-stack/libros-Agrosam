@@ -1,0 +1,9 @@
+# if system is mac load mac specific zshrc
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source "$CONFIG_PATH/zsh/zshrc.alias.mac"
+fi
+
+# if system is linux load linux specific zshrc
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  source "$CONFIG_PATH/zsh/zshrc.alias.linux"
+fi

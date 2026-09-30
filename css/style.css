@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+header {
+  background: #1e1e1e;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.oculto { display: none !important; }
+
+/* --- Gallery --- */
+#libros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.libro-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #2a2a2a;
+}
+
+.libro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-color: #3a3a3a;
+}
+
+.libro-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #2a2a2a;
+}
+
+.libro-info {
+  padding: 1rem;
+}
+
+.libro-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.libro-info p {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* --- Reader View --- */
+#reader-view {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.btn-volver {
+  background: none;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s;
+}
+
+.btn-volver:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+#libro-header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#libro-header img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  background: #2a2a2a;
+}
+
+#libro-header h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+#libro-header .autor {
+  color: #999;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#libro-header .descripcion {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- PDF Actions --- */
+#pdf-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #fff;
+  background: #2a6a6a;
+  border: 1px solid #3a8a8a;
+  transition: background 0.2s;
+}
+
+.btn-pdf:hover {
+  background: #3a8a8a;
+}
+
+.btn-pdf.btn-abrir {
+  background: transparent;
+  border: 1px solid #444;
+  color: #ccc;
+}
+
+.btn-pdf.btn-abrir:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+/* --- PDF Viewer --- */
+#pdf-viewer {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  background: #1e1e1e;
+}
+
+#pdf-embed {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  display: block;
+  border: none;
+}
+
+/* --- Empty state --- */
+#sin-libros {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+#sin-libros p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+#sin-libros .sub {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.prox-card {
+  cursor: default;
+  opacity: 1;
+}
+
+.prox-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #2a2a2a;
+}
+
+/* --- Footer --- */
+footer {
+  background: #0a0a0a;
+  color: #888;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #4a9eff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #libros-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  #libro-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #libro-header img {
+    width: 140px;
+    height: 140px;
+  }
+
+  #reader-view {
+    padding: 1rem;
+  }
+
+  #pdf-embed {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  #pdf-actions {
+    flex-direction: column;
+  }
+
+  .footer-contact p {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact a svg {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,51 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it"ll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+
+# Plugins
+plugins=(git dotenv docker docker-compose kubectl)
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH=$HOME/.local/bin:/snap/bin:$HOME/.local/share/mise/shims:$PATH
+
+# Editor used by CLI
+export EDITOR="nvim"
+export SUDO_EDITOR="$EDITOR"
+export ELECTRON_OZONE_PLATFORM_HINT="wayland"
+
+# Git Logs
+gitlog () {
+  if (( ! $# )); then
+    git log -15 --oneline --decorate --color --graph | cat
+  else
+    git log -$1 --oneline --decorate --color --graph | cat
+  fi
+}
+
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+if command -v starship &> /dev/null; then
+ eval "$(starship init zsh)"
+fi
+
+# pnpm
+export PNPM_HOME=$HOME/.local/share/pnpm
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/luis/dev/google-cloud-sdk/path.zsh.inc' ]; then . '/home/luis/dev/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/luis/dev/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/luis/dev/google-cloud-sdk/completion.zsh.inc'; fi

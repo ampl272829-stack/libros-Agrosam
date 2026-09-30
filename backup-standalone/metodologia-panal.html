@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodología Panal — Biblioteca</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #galeria { display: none; }
+    #reader-view:not(.oculto) { display: block; }
+  </style>
+</head>
+<body>
+  <header><h1>Biblioteca</h1></header>
+  <main>
+    <section id="reader-view">
+      <div id="reader-contenido"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <p><a href="mailto:alimentosagrosam@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> alimentosagrosam@gmail.com</a></p>
+        <p><a href="https://www.instagram.com/agrosam4.0" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Instagram: @agrosam4.0</a></p>
+        <p><a href="https://facebook.com/AlimentosAgrosam" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> Facebook: Alimentos Agrosam</a></p>
+        <p><a href="https://tunegocioagro.com/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Sitio Web: tunegocioagro.com</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/data.js?v=5"></script>
+  <script>
+    const libro = libros.find(l => l.id === 'metodologia-panal');
+    if (libro) {
+      document.getElementById('reader-contenido').innerHTML = `
+        <div id="libro-header">
+          <img src="${libro.portada}" alt="${libro.titulo}"
+               onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%232a2a2a%22 width=%22200%22 height=%22200%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23666%22 font-size=%2220%22>📖</text></svg>'">
+          <div>
+            <h2>${libro.titulo}</h2>
+            <p class="autor">${libro.autor}</p>
+            ${libro.descripcion ? `<p class="descripcion">${libro.descripcion}</p>` : ''}
+          </div>
+        </div>
+        <div id="pdf-actions">
+          <a href="${libro.pdf}" target="_blank" class="btn-pdf" download>📥 Descargar PDF</a>
+          <a href="${libro.pdf}" target="_blank" class="btn-pdf btn-abrir">📖 Abrir en nueva pestaña</a>
+        </div>
+        <div id="pdf-viewer">
+          <embed src="${libro.pdf}" type="application/pdf" id="pdf-embed">
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

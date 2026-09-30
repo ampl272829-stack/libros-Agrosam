@@ -1,0 +1,21 @@
+[/]
+control-center=['<Control>Tab']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+search=['<Control>b']
+shutdown=['<Super>Delete']
+www=['<Control>f']
+
+[custom-keybindings/custom0]
+binding='<Shift><Control>v'
+command='code'
+name='vs code '
+
+[custom-keybindings/custom1]
+binding='<Control>t'
+command='ghostty'
+name='Ghostty'
+
+[custom-keybindings/custom2]
+binding='<Control><Shift>g'
+command='/home/moshe/.local/bin/dictar-toggle'
+name='Dictado'

@@ -1,0 +1,13 @@
+# /home/moshe/.config/systemd/user/whisper-server.service
+[Unit]
+Description=Whisper server (transcripción en tiempo real)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/share/whisper-models/whisper-server.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
