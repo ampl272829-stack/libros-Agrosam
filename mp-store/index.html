@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M&S Store - Accesorios iPhone</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-gradient"></div>
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#" class="logo">
+          <span class="logo-text">M&S Store</span>
+        </a>
+        <p class="header-tagline">Accesorios Para telefonos</p>
+      </div>
+      <div class="header-actions">
+        <button id="btn-theme" class="btn-theme" aria-label="Cambiar tema">🌙</button>
+        <button id="btn-carrito" class="btn-carrito" aria-label="Carrito">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span id="contador-carrito" class="contador oculto">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="tienda">
+      <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content hero-grid">
+          <div class="hero-left">
+            <span class="hero-badge">🇻🇪 Envíos a todo el país</span>
+            <h2>Accesorios premium para <span class="text-gradient">iPhone y Android</span></h2>
+            <p>Descubre la mejor selección de cargadores, cables, fundas y más al mejor precio</p>
+            <div class="hero-cta">
+              <a class="hero-btn hero-btn-primary" href="#productos-grid">Ver catálogo →</a>
+              <button class="hero-btn hero-btn-ia" data-ia-abrir type="button">
+                <svg class="ia-icono ia-icono-stroke" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>M&S IA</span>
+              </button>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-line"></span>
+              <span class="hero-stat-icon">🛵</span>
+              <span class="hero-stat-label">Delivery gratis a zona céntrica de Maracay</span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <img class="hero-panel-img" src="img/hero-panel.png" alt="Imagen destacada">
+          </div>
+        </div>
+      </div>
+
+      <div id="filtros">
+        <div class="filtros-scroll">
+          <button class="filtro-btn activo" data-cat="todos">🌟 Todos</button>
+          <button class="filtro-btn" data-cat="cargadores">⚡ Cargadores</button>
+          <button class="filtro-btn" data-cat="cables">🔌 Cables</button>
+          <button class="filtro-btn" data-cat="fundas">📱 Fundas</button>
+          <button class="filtro-btn" data-cat="proteccion">🛡️ Protección</button>
+          <button class="filtro-btn" data-cat="inalambrico">🔄 Inalámbrico</button>
+          <button class="filtro-btn" data-cat="baterias">🔋 Baterías</button>
+        </div>
+      </div>
+
+      <div id="productos-grid"></div>
+    </section>
+
+    <aside id="cart-panel" class="oculto">
+      <div class="cart-header">
+        <h2>Tu Carrito 🛒</h2>
+        <button id="btn-cerrar-carrito" class="btn-cerrar" aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="cart-items"></div>
+      <div id="cart-footer" class="oculto">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button id="btn-checkout" class="btn-primary">
+          Hacer Pedido →
+        </button>
+      </div>
+      <div id="cart-vacio">
+        <div class="cart-vacio-icon">🛒</div>
+        <p>Tu carrito está vacío</p>
+        <span class="cart-vacio-sub">Agrega productos para empezar</span>
+      </div>
+    </aside>
+
+    <section id="checkout-view" class="oculto">
+      <button id="btn-volver-tienda" class="btn-volver">← Volver a la tienda</button>
+      <div class="checkout-header">
+        <h2>Confirmar Pedido</h2>
+        <p>Revisa tu pedido y completa tus datos</p>
+      </div>
+      <div id="checkout-resumen"></div>
+      <form id="checkout-form">
+        <div class="campo">
+          <label for="cf-nombre">👤 Nombre completo</label>
+          <input type="text" id="cf-nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="campo">
+          <label for="cf-telefono">📞 WhatsApp / Teléfono</label>
+          <input type="tel" id="cf-telefono" required placeholder="0412 899 1929">
+        </div>
+        <div class="campo">
+          <label for="cf-direccion">📍 Dirección de entrega</label>
+          <textarea id="cf-direccion" required placeholder="Calle, casa, referencia..."></textarea>
+        </div>
+        <div class="campo">
+          <label for="cf-notas">📝 Notas adicionales (opcional)</label>
+          <textarea id="cf-notas" placeholder="Color preferido, horario de entrega..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-enviar">
+          <span class="btn-icon">📤</span> Enviar Pedido por WhatsApp
+        </button>
+      </form>
+    </section>
+  </main>
+
+    <div id="detail-overlay" class="oculto">
+      <div id="detail-panel">
+        <button id="btn-cerrar-detalle" class="btn-cerrar-detalle" aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div id="detail-contenido"></div>
+        <div id="detail-comentarios" class="detail-comentarios oculto">
+          <div class="comentarios-header">
+            <h3>💬 Comentarios <span id="comentarios-contador">0</span></h3>
+          </div>
+          <div class="com-form-wrap">
+            <form id="form-comentario">
+              <input id="com-entrada-nombre" type="text" placeholder="Tu nombre (opcional)" class="com-input" autocomplete="off">
+              <div class="com-estrellas">
+                <span class="com-estrella" data-val="1">☆</span>
+                <span class="com-estrella" data-val="2">☆</span>
+                <span class="com-estrella" data-val="3">☆</span>
+                <span class="com-estrella" data-val="4">☆</span>
+                <span class="com-estrella" data-val="5">★</span>
+              </div>
+              <textarea id="com-entrada-texto" class="com-input" placeholder="Escribe un comentario..." required></textarea>
+              <button type="submit" class="btn-com-enviar">Enviar comentario</button>
+            </form>
+          </div>
+          <div id="comentarios-lista" class="comentarios-lista"></div>
+        </div>
+      </div>
+    </div>
+
+<footer class="footer-ia">
+    <div class="footer-ia-inner">
+      <!-- Marca -->
+      <div class="footer-ia-col">
+        <div class="footer-ia-brand">
+          <span class="footer-ia-logo">M&<span>S Store</span></span>
+          <span class="ia-badge-activo">
+            <span class="ia-dot"></span> Atención Activa
+          </span>
+        </div>
+        <p class="footer-ia-desc">
+          Tu tienda online de confianza con lo mejor en accesorios para iPhone y Android.
+          Atención personalizada en línea y envíos a todo el país.
+        </p>
+        <div class="footer-ia-horario">
+          <svg class="ia-icono ia-icono-stroke" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>24/7 para atenderte</span>
+        </div>
+        <button class="ia-btn" data-ia-abrir type="button">
+          <svg class="ia-icono ia-icono-stroke" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+          <span>M&S IA — Asistente Virtual</span>
+        </button>
+      </div>
+
+      <!-- Contacto directo -->
+      <div class="footer-ia-col">
+        <h3 class="footer-ia-titulo">Contactanos</h3>
+
+<div class="ia-contacto ia-copiable" data-ia-copiar="04128991929" data-ia-copiar-msg="Número copiado">
+          <a href="https://wa.me/584128991929" target="_blank" rel="noopener noreferrer" class="ia-contacto-link" onclick="event.stopPropagation()">
+            <svg class="ia-icono ia-icono-fill" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.745 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>WhatsApp: 0412-899-1929</span>
+          </a>
+          <div class="ia-acciones">
+            <button class="ia-boton-ia-wa" title="Redactar mensaje con IA" onclick="event.stopPropagation(); openAiWaBuilder('584128991929')" type="button">
+              <span>IA</span>
+              <svg class="ia-icono ia-icono-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+            </button>
+            <button class="ia-boton-copiar" title="Copiar número" onclick="event.stopPropagation(); iaCopiar('04128991929','Número copiado')" type="button">
+              <svg class="ia-icono-stroke" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+<div class="ia-contacto ia-copiable" data-ia-copiar="04123492953" data-ia-copiar-msg="Número 2 copiado">
+          <a href="https://wa.me/584128991929" target="_blank" rel="noopener noreferrer" class="ia-contacto-link" onclick="event.stopPropagation()">
+            <svg class="ia-icono ia-icono-fill" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.745 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>WhatsApp: 0412-349-2953</span>
+          </a>
+          <div class="ia-acciones">
+            <button class="ia-boton-ia-wa" title="Redactar mensaje con IA" onclick="event.stopPropagation(); openAiWaBuilder('584123492953')" type="button">
+              <span>IA</span>
+              <svg class="ia-icono ia-icono-fill" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+            </button>
+            <button class="ia-boton-copiar" title="Copiar número" onclick="event.stopPropagation(); iaCopiar('04123492953','Número 2 copiado')" type="button">
+              <svg class="ia-icono-stroke" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="ia-contacto ia-copiable" data-ia-copiar="@m.s_store022" data-ia-copiar-msg="Usuario copiado">
+          <a href="https://www.tiktok.com/@m.s_store022" target="_blank" rel="noopener noreferrer" class="ia-contacto-link" onclick="event.stopPropagation()">
+            <svg class="ia-icono ia-icono-fill" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.34 22a6.34 6.34 0 0 0 6.33-6.33V9.05a8.16 8.16 0 0 0 4.92 1.63V7.24a4.85 4.85 0 0 1-1-.55z"/></svg>
+            <span>TikTok: M&S_Store</span>
+          </a>
+          <div class="ia-acciones">
+            <button class="ia-boton-copiar" title="Copiar usuario" onclick="event.stopPropagation(); iaCopiar('@m.s_store022','Usuario copiado')" type="button">
+              <svg class="ia-icono-stroke" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ubicación (tienda online) -->
+      <div class="footer-ia-col">
+        <h3 class="footer-ia-titulo">Ubicación</h3>
+        <div class="ia-ubicacion ia-copiable" data-ia-copiar="Maracay, Venezuela" data-ia-copiar-msg="Ubicación copiada">
+          <div class="ia-ubicacion-cabecera">
+            <div class="ia-ubicacion-pin">
+              <span></span>
+              <svg class="ia-icono-stroke" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <div class="ia-ubicacion-titulo-linea">
+                <span class="ia-ubicacion-titulo">Maracay, Venezuela</span>
+                <span class="ia-badge-online">Tienda Online</span>
+              </div>
+              <p class="ia-ubicacion-desc">
+                Envíos a todo el territorio nacional. Delivery gratis a la zona céntrica de Maracay.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie -->
+    <div class="footer-ia-pie">
+      <p>&copy; 2026 M&S Store. Todos los derechos reservados.</p>
+      <div class="footer-ia-redes">
+        <a href="https://wa.me/584128991929" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+          <svg class="ia-icono-fill" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.745 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@m.s_store022" target="_blank" rel="noopener noreferrer" title="TikTok">
+          <svg class="ia-icono-fill" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.34 22a6.34 6.34 0 0 0 6.33-6.33V9.05a8.16 8.16 0 0 0 4.92 1.63V7.24a4.85 4.85 0 0 1-1-.55z"/></svg>
+        </a>
+        <a href="#" title="Ubicación" onclick="iaCopiar('Maracay, Venezuela','Ubicación copiada')">
+          <svg class="ia-icono-stroke" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante del asistente IA -->
+  <button class="ia-fab" id="ia-fab" data-ia-abrir aria-label="Asistente IA" title="Asistente IA" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+  </button>
+
+  <!-- Modal Asistente IA -->
+  <div id="ia-modal">
+    <div class="ia-panel">
+      <div class="ia-panel-cabecera">
+        <div class="ia-panel-titulo-wrap">
+          <div class="ia-panel-icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+          </div>
+          <div>
+            <div class="ia-panel-titulo">
+              <span>M&S Asisten</span>
+              <span class="ia-badge-modelo">IA</span>
+            </div>
+            <div class="ia-panel-sub">Atención de accesorios, envíos en Venezuela y asesoría</div>
+          </div>
+        </div>
+        <button class="ia-panel-cerrar" data-ia-cerrar aria-label="Cerrar" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="ia-tabs">
+        <button class="ia-tab ia-activo" data-ia-tab="chat" type="button">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Asesor</span>
+        </button>
+        <button class="ia-tab" data-ia-tab="wa" type="button">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2v4l-3-4H8a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h9z"/></svg>
+          <span>Redactar WhatsApp</span>
+        </button>
+      </div>
+
+      <div class="ia-pane ia-activo" id="ia-pane-chat">
+        <div class="ia-chat" id="ia-chat">
+          <div class="ia-msg ia-msg-asistente">
+            <div class="ia-msg-cabecera"><strong>M&S Asisten:</strong></div>
+            ¡Hola! Soy M&S Asisten, tu asistente virtual de M&S Store. ¿En qué te puedo ayudar con accesorios, envíos o disponibilidad?
+          </div>
+        </div>
+        <div class="ia-entrada">
+          <input class="ia-input" id="ia-user-input" type="text" placeholder="Escribe tu consulta..." autocomplete="off">
+          <button class="ia-enviar" id="ia-enviar" type="button">Enviar</button>
+        </div>
+      </div>
+
+      <div class="ia-pane" id="ia-pane-wa">
+        <p class="ia-wa-hint">Selecciona el tipo de mensaje para redactar y enviarlo directo a WhatsApp.</p>
+        <div class="ia-wa-grid">
+          <button class="ia-wa-plantilla" data-ia-template="catalogo" type="button">📦 Consultar Catálogo</button>
+          <button class="ia-wa-plantilla" data-ia-template="envio" type="button">🚚 Consulta de Envíos</button>
+          <button class="ia-wa-plantilla" data-ia-template="horario" type="button">🕒 Horario de Atención</button>
+          <button class="ia-wa-plantilla" data-ia-template="asesoria" type="button">👤 Asesoría de Producto</button>
+        </div>
+        <textarea id="ia-wa-textarea" class="ia-wa-textarea" rows="3" placeholder="El mensaje aparecerá aquí..."></textarea>
+        <div class="ia-wa-pie">
+          <div class="ia-numero-destino" id="ia-numero-destino">Enviando a: +584128991929</div>
+          <button class="ia-wa-enviar" id="ia-wa-enviar" type="button">Abrir en WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="oculto"></div>
+
+  <link rel="stylesheet" href="css/ia.css">
+  <script src="js/ratelimit.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/comentarios.js"></script>
+  <script src="js/config-ia.js"></script>
+  <script src="js/ia.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

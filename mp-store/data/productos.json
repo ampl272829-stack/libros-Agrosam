@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cable-lightning",
+    "nombre": "Cable Lightning 2m",
+    "descripcion": "Cable trenzado resistente, certificado MFi",
+    "descripcionLarga": "Cable Lightning de 2 metros con certificación MFi. Trenzado en nylon para máxima durabilidad.",
+    "precio": 9.99,
+    "categoria": "cables",
+    "img": "img/cable-lightning.svg",
+    "imagenes": [
+      "img/cable-lightning.svg",
+      "img/cable-lightning-2.svg",
+      "img/cable-lightning-3.svg"
+    ]
+  },
+  {
+    "id": "cable-usbc",
+    "nombre": "Cable USB-C a USB-C 2m",
+    "descripcion": "Cable rápido 60W, trenzado, compatible con iPhone 15",
+    "descripcionLarga": "Cable USB-C a USB-C de 2 metros con soporte para carga rápida de hasta 60W. Compatible con iPhone 15, iPad Pro y MacBook.",
+    "precio": 11.99,
+    "categoria": "cables",
+    "img": "img/cable-usbc.svg",
+    "imagenes": [
+      "img/cable-usbc.svg",
+      "img/cable-usbc-2.svg",
+      "img/cable-usbc-3.svg"
+    ]
+  },
+  {
+    "id": "funda-silicona",
+    "nombre": "Funda de Silicona",
+    "descripcion": "Funda suave al tacto, protección completa contra golpes",
+    "descripcionLarga": "Funda de silicona de alta calidad con acabado suave al tacto. Protege tu iPhone contra caídas y golpes.",
+    "precio": 12.99,
+    "categoria": "fundas",
+    "img": "img/funda-silicona.svg",
+    "imagenes": [
+      "img/funda-silicona.svg",
+      "img/funda-silicona-2.svg",
+      "img/funda-silicona-3.svg"
+    ]
+  },
+  {
+    "id": "funda-transparente",
+    "nombre": "Funda Transparente Antiamarillento",
+    "descripcion": "Funda ultra delgada que no se vuelve amarilla con el tiempo",
+    "descripcionLarga": "Funda transparente ultradelgada con tecnología antiamarillento. Tratamiento UV especial.",
+    "precio": 10.99,
+    "categoria": "fundas",
+    "img": "img/funda-transparente.svg",
+    "imagenes": [
+      "img/funda-transparente.svg",
+      "img/funda-transparente-2.svg",
+      "img/funda-transparente-3.svg"
+    ]
+  },
+  {
+    "id": "vidrio-templado",
+    "nombre": "Vidrio Templado 2 Pack",
+    "descripcion": "Protección de pantalla 9H, anti huellas, fácil instalación",
+    "descripcionLarga": "Pack de 2 vidrios templados con dureza 9H para máxima protección de pantalla.",
+    "precio": 7.99,
+    "categoria": "proteccion",
+    "img": "img/vidrio-templado.svg",
+    "imagenes": [
+      "img/vidrio-templado.svg",
+      "img/vidrio-templado-2.svg",
+      "img/vidrio-templado-3.svg"
+    ]
+  },
+  {
+    "id": "powerbank-10000",
+    "nombre": "Power Bank 10000mAh",
+    "descripcion": "Batería portátil delgada, carga rápida PD 20W",
+    "descripcionLarga": "Batería externa de 10000mAh con carga rápida Power Delivery de 20W.",
+    "precio": 29.99,
+    "categoria": "baterias",
+    "img": "img/powerbank-10000.svg",
+    "imagenes": [
+      "img/powerbank-10000.svg",
+      "img/powerbank-10000-2.svg",
+      "img/powerbank-10000-3.svg"
+    ]
+  }
+]

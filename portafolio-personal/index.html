@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus — Desarrollador Web Full-Stack & Soluciones Digitales</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        darkBg: '#090d16',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#090d16] dark:text-slate-100 transition-colors duration-300 relative selection:bg-blue-500 selection:text-white">
+
+    <!-- Background glowing gradients -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-tr from-blue-400/10 via-indigo-500/10 to-transparent dark:from-blue-600/10 dark:via-indigo-900/10 blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-[#090d16]/75 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 transition-colors">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-extrabold text-xl tracking-tight flex items-center gap-3 group">
+                <span class="bg-gradient-to-tr from-blue-600 to-indigo-600 text-white p-2 rounded-xl shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform">
+                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                </span>
+                <span class="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">Nexus<span class="text-blue-600">Dev</span></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#inicio" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Servicios</a>
+                <a href="#proyectos" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Proyectos</a>
+                <a href="#sobre-mi" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sobre Mí</a>
+                <a href="#contacto" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contacto</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-slate-700 dark:text-slate-200 shadow-sm" aria-label="Cambiar tema">
+                    <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+                    <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+                <a href="#contacto" class="hidden sm:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98]">
+                    <span>Contratar</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-36 pb-24 md:pt-48 md:pb-36 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold mb-8 border border-blue-200/80 dark:border-blue-800/80 shadow-sm animate-float">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping"></span>
+                Disponible para proyectos freelance y consultoría
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
+                Construyo <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">experiencias web</span> que impulsan tu negocio.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+                Desarrollador Web Full-Stack especializado en tiendas online veloces, menús interactivos y aplicaciones a medida con diseño impecable y alto rendimiento.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contacto" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-blue-600/30 hover:scale-[1.02]">
+                    <span>Hablemos de tu proyecto</span>
+                    <i data-lucide="message-square-code" class="w-5 h-5"></i>
+                </a>
+                <a href="#proyectos" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 px-8 py-4 rounded-2xl font-bold transition-all shadow-sm">
+                    <span>Ver mis Proyectos</span>
+                    <i data-lucide="folder-git-2" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <!-- Stats / Highlights -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 pt-12 border-t border-slate-200/60 dark:border-slate-800/60 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <p class="text-3xl font-black text-blue-600 dark:text-blue-400">100%</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1 uppercase tracking-wider">Diseño Responsive</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl font-black text-blue-600 dark:text-blue-400">+3</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1 uppercase tracking-wider">Apps en Producción</p>
+                </div>
+                <div class="text-center col-span-2 md:col-span-1">
+                    <p class="text-3xl font-black text-blue-600 dark:text-blue-400">Directo</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1 uppercase tracking-wider">Comunicación con WhatsApp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-24 bg-slate-100/50 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-blue-600 dark:text-blue-400 mb-3 block">¿Cómo puedo ayudarte?</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Soluciones tecnológicas a tu medida</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="glass-card p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tiendas Online & SPAs</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        E-commerce ágiles con carrito interactivo, vistas de detalle y conexión directa con WhatsApp para concretar ventas al instante.
+                    </p>
+                    <ul class="text-xs font-medium text-slate-500 dark:text-slate-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i> Carrito con LocalStorage</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i> Galerías e imágenes optimizadas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i> Pedidos automatizados por WhatsApp</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="glass-card p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-600/30 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout-dashboard" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Menús & Paneles Admin</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Menús digitales interactivos para restaurantes y paneles de control personalizados para administrar productos de forma sencilla.
+                    </p>
+                    <ul class="text-xs font-medium text-slate-500 dark:text-slate-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-indigo-600"></i> Panel de gestión integrado</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-indigo-600"></i> Interfaz intuitiva y veloz</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-indigo-600"></i> Filtros por categoría y búsqueda</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="glass-card p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-violet-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-violet-600/30 group-hover:scale-110 transition-transform">
+                        <i data-lucide="book-open" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bibliotecas & Lectores Web</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Plataformas de lectura digital para manuales, PDFs y audiolibros incrustados con excelente presentación visual.
+                    </p>
+                    <ul class="text-xs font-medium text-slate-500 dark:text-slate-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-violet-600"></i> Visor de PDF embebido</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-violet-600"></i> Organización de contenido</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-violet-600"></i> Experiencia de lectura fluida</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-blue-600 dark:text-blue-400 mb-3 block">Portafolio</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Proyectos en Vivo y en GitHub</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Proyecto 1: M&S Store -->
+                <div class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-52 bg-gradient-to-tr from-blue-600 to-indigo-600 p-6 flex items-center justify-center text-white relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/10"></div>
+                            <i data-lucide="store" class="w-20 h-20 opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"></i>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">E-Commerce</span>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">M&S Store</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                                Tienda online SPA para accesorios de iPhone con vista de detalles, galería, sistema de comentarios con calificación y checkout vía WhatsApp.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs font-semibold mb-6">
+                                <span class="bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-blue-200/50 dark:border-blue-800/50">JavaScript</span>
+                                <span class="bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-blue-200/50 dark:border-blue-800/50">Tailwind CSS</span>
+                                <span class="bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-lg border border-blue-200/50 dark:border-blue-800/50">LocalStorage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-0 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <a href="https://ampl272829-stack.github.io/libros-Agrosam/ms-store/" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-600/20">
+                                <span>Ver Demo</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://wa.me/584128991929?text=Hola,%20quiero%20información%20sobre%20una%20tienda%20online%20como%20M%26S%20Store" target="_blank" class="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors text-slate-700 dark:text-slate-300" title="Consultar por WhatsApp">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <a href="https://github.com/moshe/mp-store" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white py-2.5 rounded-xl font-semibold text-xs transition-all">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>Ver código en GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2: Moas Pizza -->
+                <div class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-52 bg-gradient-to-tr from-orange-500 to-rose-600 p-6 flex items-center justify-center text-white relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/10"></div>
+                            <i data-lucide="pizza" class="w-20 h-20 opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"></i>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Menú & Admin</span>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Moas Pizza</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                                Menú interactivo digital para pizzería con opciones de personalización, categorías dinámicas y panel de administración para gestión de productos.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs font-semibold mb-6">
+                                <span class="bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 px-3 py-1.5 rounded-lg border border-orange-200/50 dark:border-orange-800/50">Vanilla JS</span>
+                                <span class="bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 px-3 py-1.5 rounded-lg border border-orange-200/50 dark:border-orange-800/50">Admin Panel</span>
+                                <span class="bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 px-3 py-1.5 rounded-lg border border-orange-200/50 dark:border-orange-800/50">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-0 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <a href="https://ampl272829-stack.github.io/libros-Agrosam/moas-pizza/" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-orange-600/20">
+                                <span>Ver Demo</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://wa.me/584128991929?text=Hola,%20quiero%20un%20menú%20interactivo%20como%20Moas%20Pizza" target="_blank" class="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors text-slate-700 dark:text-slate-300" title="Consultar por WhatsApp">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <a href="https://github.com/moshe/moas-pizza" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white py-2.5 rounded-xl font-semibold text-xs transition-all">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>Ver código en GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3: Agrosam / Audiolibros -->
+                <div class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-52 bg-gradient-to-tr from-emerald-500 to-teal-600 p-6 flex items-center justify-center text-white relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/10"></div>
+                            <i data-lucide="book-marked" class="w-20 h-20 opacity-90 group-hover:scale-110 transition-transform duration-500 relative z-10"></i>
+                            <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Biblioteca PDF</span>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Agrosam / Audiolibros</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                                Biblioteca digital y lector de manuales en PDF con visor integrado, galería y estructura SPA para consulta rápida de contenido.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs font-semibold mb-6">
+                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 px-3 py-1.5 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50">PDF Embed</span>
+                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 px-3 py-1.5 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50">SPA Gallery</span>
+                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 px-3 py-1.5 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50">Vanilla JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-0 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <a href="https://ampl272829-stack.github.io/libros-Agrosam/guia-gerente.html" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-emerald-600/20">
+                                <span>Ver Demo</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://wa.me/584128991929?text=Hola,%20quiero%20una%20biblioteca%20digital%20o%20lector%20PDF" target="_blank" class="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors text-slate-700 dark:text-slate-300" title="Consultar por WhatsApp">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <a href="https://github.com/moshe/audiolibros" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white py-2.5 rounded-xl font-semibold text-xs transition-all">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>Ver código en GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="sobre-mi" class="py-24 bg-slate-100/50 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-xs uppercase font-extrabold tracking-widest text-blue-600 dark:text-blue-400 mb-3 block">Sobre Mí</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Comprometido con la excelencia y la velocidad</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 font-medium">
+                        Me apasiona transformar problemas complejos en interfaces limpias, intuitivas y de alto rendimiento. No solo escribo código, sino que analizo qué necesita tu negocio para generar impacto real desde el primer día.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-medium">
+                        Ya sea que estés lanzando un emprendimiento o necesites digitalizar procesos de tu empresa, garantizo un desarrollo a la medida, sin código innecesario y con total transparencia.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold">
+                        <div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600"></i>
+                            <span>Código Limpio</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600"></i>
+                            <span>100% Adaptable</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600"></i>
+                            <span>Entrega Ágil</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600"></i>
+                            <span>Soporte Directo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl shadow-xl">
+                    <h3 class="font-bold text-xl mb-6 flex items-center gap-3">
+                        <i data-lucide="cpu" class="w-6 h-6 text-blue-600"></i>
+                        <span>Stack Tecnológico</span>
+                    </h3>
+                    <div class="space-y-6 text-sm">
+                        <div>
+                            <div class="flex justify-between mb-2 font-bold">
+                                <span>JavaScript / HTML5 / CSS3</span>
+                                <span class="text-blue-600">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 font-bold">
+                                <span>Tailwind CSS & Modern UI</span>
+                                <span class="text-blue-600">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 font-bold">
+                                <span>Arquitectura SPA & Frontend</span>
+                                <span class="text-blue-600">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2 font-bold">
+                                <span>Git & Herramientas de Desarrollo</span>
+                                <span class="text-blue-600">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto bg-gradient-to-tr from-blue-600 to-indigo-600 text-white rounded-3xl p-10 md:p-16 text-center shadow-2xl shadow-blue-600/30 relative overflow-hidden">
+            <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-24 -top-24 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 relative z-10">¿Listo para impulsar tu próximo proyecto?</h2>
+            <p class="text-blue-100 mb-10 max-w-xl mx-auto text-base md:text-lg leading-relaxed relative z-10 font-medium">
+                Hablemos sobre tu idea, negocio o tienda online. Diseñemos juntos la solución perfecta adaptada a tus necesidades.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+                <a href="https://wa.me/584128991929?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-2xl font-bold transition-all shadow-xl hover:scale-105">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span>Escribir por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="font-semibold">&copy; 2026 NexusDev. Todos los derechos reservados.</p>
+            <p class="flex items-center gap-1 font-medium">
+                Construido con <i data-lucide="heart" class="w-3.5 h-3.5 text-red-500 fill-red-500"></i> para destacar en el mundo digital.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script para Modo Oscuro y Lucide Icons -->
+    <script>
+        lucide.createIcons();
+
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
+</body>
+</html>

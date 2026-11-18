@@ -1,0 +1,14 @@
+{
+  "name": "mp-store",
+  "version": "1.0.0",
+  "description": "M&S Store - Tienda de accesorios iPhone",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.2.0"
+  }
+}

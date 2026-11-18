@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5f5ff"/><stop offset="100%" stop-color="#e0e0ff"/></linearGradient></defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect x="40" y="175" width="320" height="50" rx="8" fill="#fff" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.06))" stroke="#e8e8f0" stroke-width="1"/>
+  <!-- Cables splitting -->
+  <rect x="310" y="185" width="20" height="30" rx="4" fill="#1a1a2e"/>
+  <rect x="335" y="175" width="40" height="12" rx="4" fill="#6c63ff"/>
+  <rect x="335" y="195" width="40" height="12" rx="4" fill="#e91e90"/>
+  <rect x="335" y="215" width="40" height="12" rx="4" fill="#34c759"/>
+  <text x="200" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#8a8aaa" font-weight="600">3 en 1 · Viaje</text>
+</svg>

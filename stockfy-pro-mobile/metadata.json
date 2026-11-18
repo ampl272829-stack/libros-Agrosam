@@ -1,0 +1,6 @@
+{
+  "name": "Stockfy Pro Mobile",
+  "description": "Control integral de inventario bicurrency ($/Bs), tasa BCV/Paralelo, capital operativo, monederos, fiados, gastos fijos y garantías.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
